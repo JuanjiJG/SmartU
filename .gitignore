@@ -1,15 +1,12 @@
-vendor/
-node_modules/
+*.class
 
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
 
-# Laravel 5 & Lumen specific
-bootstrap/cache/
-.env.*.php
-.env.php
-.env
+# Package Files #
+*.jar
+*.war
+*.ear
 
-# Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
-.rocketeer/
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
