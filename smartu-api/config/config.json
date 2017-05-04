@@ -1,0 +1,10 @@
+{
+  "db":{
+    "host": "172.17.0.2",
+		"port": 3306,
+		"driver": "mysql",
+		"username": "root",
+		"password": "rootpassword",
+		"database": "smartu_schema"
+  }
+}
