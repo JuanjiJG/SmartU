@@ -1,42 +1,44 @@
+% Importamos el preámbulo con la configuración del documento
 \input{preamble.tex}
 
 \begin{document}
 
+% Portada del documento
 \input{intro/front}
-\frontmatter
+
+% Prefacio del documento
 \input{intro/preface}
 
+\frontmatter
 \begingroup
 \let\cleardoublepage\clearpage
   \tableofcontents
-%  \listoffigures
-%  \listoftables
-%  \lstlistoflistings
+  % \listoffigures
+  % \listoftables
+  % \lstlistoflistings
 \endgroup
 
 \newpage
 \thispagestyle{empty}
 
+% Capítulos del documento
 \mainmatter
 \input{chapters/01_Introduccion}
-% \input{chapters/02_Objetivos}
-% \input{chapters/03_Metodologia}
-% \input{chapters/04_Resultados}
-% \input{chapters/05_Conclusiones}
-% \input{chapters/06_Anexos}
 
+% Bibliografía
 \backmatter
 \begingroup
 	\setlength\parindent{0pt}
 	\input{extra/glossary}
 \endgroup
 
+% Glosario de términos
 \newpage
 \begin{thebibliography}{99}
 	\input{extra/bibliography}
 \end{thebibliography}
 
-\newpage
+\chapter*{}
 \thispagestyle{empty}
 
 \end{document}

@@ -14,7 +14,7 @@
 \newcommand{\titulo}{SmartU}
 \newcommand{\tituloEng}{SmartU}
 \newcommand{\subtitulo}{Desarrollo de un espacio colaborativo de ideas y proyectos}
-\newcommand{\subtituloEng}{Development of a coworking space for ideas and projects}
+\newcommand{\subtituloEng}{Development of a collaborative space of ideas and projects}
 \newcommand{\grado}{Grado en Ingeniería Informática}
 \newcommand{\autor}{Juan José Jiménez García}
 \newcommand{\email}{juanjojg@correo.ugr.es}
@@ -32,6 +32,8 @@
 \usepackage{fancyhdr}
 \usepackage{pdfpages}
 \usepackage[hidelinks]{hyperref}
+
+% Añade aquí las carpetas de imágenes para que el compilador las pueda analizar
 \graphicspath{{../images/}{../screenshots/}}
 
 % Información del archivo
@@ -48,8 +50,8 @@
 \makeatletter
 \def\clearpage{
   \ifvmode
-    \ifnum \@dbltopnum =\m@ne
-      \ifdim \pagetotal <\topskip
+    \ifnum \@dbltopnum = \m@ne
+      \ifdim \pagetotal < \topskip
         \hbox{}
       \fi
     \fi
