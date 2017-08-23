@@ -1,0 +1,42 @@
+\input{extra/preamble.tex}
+
+\begin{document}
+
+\input{front/front}
+\frontmatter
+\input{prefaces/preface}
+
+\begingroup
+\let\cleardoublepage\clearpage
+  \tableofcontents
+%  \listoffigures
+%  \listoftables
+%  \lstlistoflistings
+\endgroup
+
+\newpage
+\thispagestyle{empty}
+
+\mainmatter
+\input{chapters/01_Introduccion}
+% \input{chapters/02_Objetivos}
+% \input{chapters/03_Metodologia}
+% \input{chapters/04_Resultados}
+% \input{chapters/05_Conclusiones}
+% \input{chapters/06_Anexos}
+
+\backmatter
+\begingroup
+	\setlength\parindent{0pt}
+	\input{extra/glossary}
+\endgroup
+
+\newpage
+\begin{thebibliography}{99}
+	\input{extra/bibliography}
+\end{thebibliography}
+
+\newpage
+\thispagestyle{empty}
+
+\end{document}

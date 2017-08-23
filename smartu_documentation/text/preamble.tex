@@ -1,0 +1,79 @@
+% Definición de la clase de documentación
+\documentclass[a4paper, 11pt]{book} % A4 paper and 11pt font size
+
+% Entrada y salida de texto
+\usepackage[utf8]{inputenc}
+\usepackage{ubuntu}
+
+% Idioma
+\usepackage[spanish, es-tabla]{babel} % Selecciona el español para palabras introducidas automáticamente, p.ej. "septiembre" en la fecha y especifica que se use la palabra Tabla en vez de Cuadro
+
+% Información reutilizable
+\newcommand{\asunto}{Trabajo de Fin de Grado}
+\newcommand{\titulo}{Análisis de plataforma de recursos de apoyo a la docencia Prado2}
+\newcommand{\tituloEng}{Analysis of teaching support resources platform Prado2}
+\newcommand{\grado}{Grado en Ingeniería Informática}
+\newcommand{\autor}{Juan José Jiménez García}
+\newcommand{\email}{juanjojg@correo.ugr.es}
+\newcommand{\tutor}{Miguel Gea Megías}
+\newcommand{\escuela}{Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación}
+\newcommand{\universidad}{Universidad de Granada}
+\newcommand{\ciudad}{Granada}
+\newcommand{\vers}{Versión 0.1}
+\providecommand{\keywords}{software libre}
+\providecommand{\keywordsen}{free software}
+
+% Otros paquetes
+% \usepackage{amsmath,amsfonts,amsthm} % Math packages
+% %\usepackage{graphics,graphicx, floatrow} %para incluir imágenes y notas en las imágenes
+% \usepackage{graphics,graphicx, float} %para incluir imágenes y colocarlas
+% \graphicspath{{img/}}
+%
+% \usepackage{xcolor}
+% \usepackage{url}
+% \usepackage[hidelinks]{hyperref}
+%
+% % \usepackage[bookmarks=true,
+% %             bookmarksnumbered=false, % true means bookmarks in
+% %                                      % left window are numbered
+% %             bookmarksopen=false,     % true means only level 1
+% %                                      % are displayed.
+% %             colorlinks=true,
+% %             urlcolor=webblue,
+% %             linkcolor=webblue]{hyperref}
+%
+% \definecolor{webgreen}{rgb}{0, 0.5, 0} % less intense green
+% \definecolor{webblue}{rgb}{0, 0, 0.5}  % less intense blue
+% \definecolor{webred}{rgb}{0.5, 0, 0}   % less intense red
+%
+% \usepackage{eurosym}
+% \usepackage{colortbl}
+% \definecolor{Gray}{gray}{0.9}
+% %\usepackage{minted}
+% \usepackage{fancyvrb}
+%
+% % Para hacer tablas comlejas
+% %\usepackage{multirow}
+% %\usepackage{threeparttable}
+%
+% %\usepackage{sectsty} % Allows customizing section commands
+% %\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+%
+% \usepackage{lastpage} % Para poder hacer uso del número de la última página
+% \usepackage{fancyhdr} % Custom headers and footers
+% \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+% \fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+% \fancyfoot[L]{} % Empty left footer
+% \fancyfoot[C]{Página \thepage \hspace{1pt} de \pageref{LastPage}} % Page numbering for center footer
+% \fancyfoot[R]{} % Empty right footer
+% \renewcommand{\headrulewidth}{0pt} % Remove header underlines
+% \renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+% \setlength{\headheight}{13.6pt} % Customize the height of the header
+%
+% \numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+% \numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+% \numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+%
+% \setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+%
+% \newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
