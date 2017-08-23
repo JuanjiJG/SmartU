@@ -11,10 +11,10 @@ all: clean doc
 doc:
 	@echo "Compilando documentación del proyecto..."
 	cd text; \
-	pdflatex.exe -shell-escape -synctex=1 -interaction=nonstopmode -output-directory=../ documentacion.tex; \
-	pdflatex.exe -shell-escape -synctex=1 -interaction=nonstopmode -output-directory=../ documentacion.tex; \
+	pdflatex.exe -shell-escape -synctex=1 -interaction=nonstopmode -output-directory=../ documentation.tex; \
+	pdflatex.exe -shell-escape -synctex=1 -interaction=nonstopmode -output-directory=../ documentation.tex; \
 	cd ..; \
-	mv documentacion.pdf Jimenez_Garcia_Juan_Jose.pdf
+	mv documentation.pdf Jimenez_Garcia_Juan_Jose.pdf
 
 # Limpia los archivos compilados, así como los archivos objeto y los paquetes zip
 .PHONY: clean
