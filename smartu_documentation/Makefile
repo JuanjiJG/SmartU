@@ -1,13 +1,18 @@
-all: doc
+all: clean doc
 
 # Generación del PDF compilando el archivo LaTeX con pdflatex
+
 # Con el objetivo de generar los enlaces dentro del documento,
-# se compila el mismo fichero dos veces
+# se compila el mismo fichero dos veces.
+
+# IMPORTANTE: Dado que se está utilizando TeXLive en Windows,
+# el comando pdflatex incluye la extensión .exe, debiendo eliminarse
+# en caso de querer ejecutar este Makefile sobre Linux.
 doc:
 	@echo "Compilando documentación del proyecto..."
 	cd text; \
-	pdflatex -shell-escape -synctex=1 -interaction=nonstopmode -output-directory=../ documentacion.tex; \
-	pdflatex -shell-escape -synctex=1 -interaction=nonstopmode -output-directory=../ documentacion.tex; \
+	pdflatex.exe -shell-escape -synctex=1 -interaction=nonstopmode -output-directory=../ documentacion.tex; \
+	pdflatex.exe -shell-escape -synctex=1 -interaction=nonstopmode -output-directory=../ documentacion.tex; \
 	cd ..; \
 	mv documentacion.pdf Jimenez_Garcia_Juan_Jose.pdf
 
@@ -15,4 +20,4 @@ doc:
 .PHONY: clean
 clean:
 	@echo "Limpiando archivos de compilación..."
-	@rm -f {*.aux,*.lof,*.log,*.lol,*.lot,*.out,*.synctex.gz,*toc}
+	@rm -fv *.aux *.lof *.log *.lol *.lot *.out *.synctex.gz *.toc
