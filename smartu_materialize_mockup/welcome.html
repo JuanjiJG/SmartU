@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Smartu - Preview Mockup</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.css" media="screen,projection"/>
+    <!--Import styles-->
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<!--Header-->
+<header class="no-sidenav">
+    <!--Login Dropdown Structure-->
+    <ul id="login-dropdown" class="dropdown-content">
+        <li><a class="cyan-text waves-effect" href="#!">Iniciar sesión</a></li>
+        <li><a class="cyan-text waves-effect" href="#!">Crear una cuenta</a></li>
+        <li><a class="cyan-text waves-effect" href="#!">Entrar como invitado</a></li>
+    </ul>
+    <!--Mobile SideNav Structure-->
+    <ul id="welcome-sidenav" class="side-nav">
+        <li>
+            <!--User info panel-->
+            <div class="background gradient-purple user-view">
+                <a href="#!"><span class="white-text name">SmartU</span></a>
+                <a href="#!"><span class="white-text email">Sesión no iniciada</span></a>
+            </div>
+        </li>
+        <!--Links panel-->
+        <li><a href="#!" class="waves-effect"><i class="material-icons">exit_to_app</i>Iniciar sesión</a></li>
+        <li><a href="#!" class="waves-effect"><i class="material-icons">person_add</i>Crear una cuenta</a></li>
+        <li><a href="#!" class="waves-effect"><i class="material-icons">person</i>Entrar como invitado</a></li>
+    </ul>
+    <!--Navbar Structure-->
+    <nav class="blue-grey darken-4">
+        <div class="container">
+            <div class="nav-wrapper">
+                <!--SideNav Trigger-->
+                <a href="#!" data-activates="welcome-sidenav" class="button-collapse"><i
+                        class="material-icons">menu</i></a>
+                <!--The Logo-->
+                <a href="#!" class="brand-logo">SmartU</a>
+                <ul class="right hide-on-med-and-down">
+                    <!--Dropdown Trigger-->
+                    <li><a class="dropdown-button" href="#!" data-constrainwidth="false" data-beloworigin="true"
+                           data-activates="login-dropdown">Acceder<i
+                            class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--Main webpage content-->
+<main class="no-sidenav">
+    <!--Index Call To Action Banner-->
+    <div id="index-banner" class="background gradient-blue flow-text">
+        <div class="container">
+            <div class="section">
+                <br>
+                <h1 class="center light white-text">Bienvenid@ a SmartU</h1>
+                <div class="row center">
+                    <h5 class="col s12 white-text thin">¡Publica tu idea, conoce gente y forma equipo para llevarla a
+                        cabo!</h5>
+                </div>
+                <div class="row center">
+                    <a href="index.html" class="btn-large waves-effect waves-light gradient-red light">Comenzar</a>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <!--SmartU Promo Section-->
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <h3 class="center light cyan-text text-darken-4">¿Qué es SmartU?</h3>
+            </div>
+            <div class="row">
+                <div class="col s12 m4">
+                    <h2 class="center cyan-text text-darken-2"><i class="material-icons large">lightbulb_outline</i>
+                    </h2>
+                    <h5 class="center">Dale forma a tus ideas</h5>
+                    <p class="center light">SmartU es una red de discusión y colaboración en equipo. ¿Tienes una idea
+                        para un proyecto y necesitas gente de otras disciplinas? Súbela y encuentra a las personas que
+                        necesitas. Todos pueden colaborar, ya sea apuntándose al equipo, aportando ideas
+                        y comentarios, e incluso dando un "¡Buena idea!" al proyecto.</p>
+                </div>
+                <div class="col s12 m4">
+                    <h2 class="center cyan-text text-darken-2"><i class="material-icons large">group</i></h2>
+                    <h5 class="center">Abierto a todo el mundo</h5>
+                    <p class="center light">La filosofía de SmartU reside en acercar más a las personas para dar vida a
+                        grandes y mejores cosas. En esta comunidad hay sitio para todos, ya seas estudiante,
+                        un ciudadano de a pie o un empresario interesado en potenciar una idea creativa.
+                        ¡Echa un vistazo a las ideas que se están forjando aquí y sé parte de ellas!</p>
+                </div>
+                <div class="col s12 m4">
+                    <h2 class="center cyan-text text-darken-2"><i class="material-icons large">face</i></h2>
+                    <h5 class="center">Pensado para el usuario</h5>
+                    <p class="center light">Mediante el uso de elementos y principios de diseño de Material Design,
+                        ofrecemos al usuario una interfaz más intuitiva y clara que le aporta más información durante su
+                        uso. Con un sistema totalmente adaptable a cualquier tipo de pantalla, logramos una experiencia
+                        unificada para todos los dispositivos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!--Footer-->
+<footer class="page-footer blue-grey darken-4 no-sidenav">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 m6 s12">
+                <h5 class="light">Acerca de SmartU</h5>
+                <p class="light">SmartU nace del proyecto multidisciplinar
+                    llevado a cabo en la
+                    <a class="cyan-text" href="http://www.ugr.es/">Universidad de Granada</a>,
+                    como parte del programa
+                    <a class="cyan-text" href="https://ec.europa.eu/programmes/horizon2020/">H2020</a>
+                    para conectar las universidades a las ciudades inteligentes.</p>
+            </div>
+            <div class="col l5 m5 offset-l1 offset-m1 s12">
+                <h5 class="light">Enlaces de interés</h5>
+                <ul class="light">
+                    <li><a class="cyan-text" href="#!">Página web del proyecto</a></li>
+                    <li><a class="cyan-text" href="#!">Perfil en Twitter del proyecto</a></li>
+                    <li><a class="cyan-text" href="#!">Documentación del proyecto</a></li>
+                    <li><a class="cyan-text" href="#!">Repositorio del proyecto en GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l6 m6 offset-l7 offset-m7 s12">
+                <!--Language Dropdown Trigger-->
+                <a class='dropdown-button btn waves-effect cyan light' href='#!' data-activates='language-dropdown'>Idioma:
+                    <b>Español</b><i class="material-icons right">arrow_drop_down</i></a>
+                <!--Language Dropdown Structure-->
+                <ul id='language-dropdown' class='dropdown-content'>
+                    <li><a class="cyan-text waves-effect" href="#!">Español</a></li>
+                    <li><a class="cyan-text waves-effect" href="#!">Inglés</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            &copy 2017 Juanjo Jiménez. Código bajo la licencia <a class="cyan-text"
+                                                                  href="https://opensource.org/licenses/MIT">MIT</a>.
+        </div>
+    </div>
+</footer>
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="materialize/js/bin/materialize.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+</body>
+</html>
