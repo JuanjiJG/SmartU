@@ -1,23 +1,25 @@
-% Definición de la clase de documentación
+% Definición de la clase del documento
 \documentclass[a4paper, 11pt]{book} % A4 paper and 11pt font size
 
 % Entrada y salida de texto
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[sfdefault]{roboto}  %% Option 'sfdefault' only if the base font of the document is to be sans serif
+\usepackage[sfdefault]{roboto} % Option 'sfdefault' only if the base font of the document is to be sans serif
 
 % Idioma
-\usepackage[spanish, es-tabla]{babel} % Selecciona el español para palabras introducidas automáticamente, p.ej. "septiembre" en la fecha y especifica que se use la palabra Tabla en vez de Cuadro
+\usepackage[spanish, es-tabla]{babel} % Selecciona el español y el uso de la palabra "tabla" en lugar de "cuadro"
 
 % Información reutilizable
 \newcommand{\asunto}{Trabajo de Fin de Grado}
-\newcommand{\titulo}{Análisis de plataforma de recursos de apoyo a la docencia Prado2}
+\newcommand{\titulo}{SmartU}
+\newcommand{\subtitulo}{La universidad conectada a la ciudad sostenible\\Propuesta de espacio coworking de ideas y servicios}
 \newcommand{\tituloEng}{Analysis of teaching support resources platform Prado2}
 \newcommand{\grado}{Grado en Ingeniería Informática}
 \newcommand{\autor}{Juan José Jiménez García}
 \newcommand{\email}{juanjojg@correo.ugr.es}
 \newcommand{\tutor}{Miguel Gea Megías}
 \newcommand{\escuela}{Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación}
+\newcommand{\departamento}{Departamento de Lenguajes y Sistemas Informáticos}
 \newcommand{\universidad}{Universidad de Granada}
 \newcommand{\ciudad}{Granada}
 \newcommand{\vers}{Versión 0.1}
@@ -25,6 +27,14 @@
 \providecommand{\keywordsen}{free software}
 
 % Otros paquetes
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+
+
+
+
+
+
 % \usepackage{amsmath,amsfonts,amsthm} % Math packages
 % %\usepackage{graphics,graphicx, floatrow} %para incluir imágenes y notas en las imágenes
 % \usepackage{graphics,graphicx, float} %para incluir imágenes y colocarlas
