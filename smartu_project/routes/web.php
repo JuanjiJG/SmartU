@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@index')->name('index');
+Route::get('/about', 'PagesController@about')->name('about');
+Route::get('/dashboard', 'PagesController@dashboard')->name('dashboard');
+
+Route::resource('projects', 'ProjectController');
+
+Auth::routes();
