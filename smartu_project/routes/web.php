@@ -11,10 +11,32 @@
 |
 */
 
-Route::get('/', 'PagesController@index')->name('index');
-Route::get('/about', 'PagesController@about')->name('about');
-Route::get('/dashboard', 'PagesController@dashboard')->name('dashboard');
+// Language Controller Route
+Route::get('lang/{language}', 'LanguageController@switchLang')->name('lang.switch');
 
+// Pages Controller Routes
+Route::get('/', 'PageController@index')->name('index');
+Route::get(__('routes.about'), 'PageController@about')->name('about');
+Route::get(__('routes.dashboard'), 'PageController@dashboard')->name('dashboard');
+
+// Profile Controller Routes
+Route::get(__('routes.profile'), 'ProfileController@index')->name('profile');
+Route::post(__('routes.profile').'/avatar', 'ProfileController@store')->name('profile.avatar');
+
+// Authentication Routes
+Route::get(__('routes.login'), 'Auth\LoginController@showLoginForm')->name('login');
+Route::post(__('routes.login'), 'Auth\LoginController@login');
+Route::post(__('routes.logout'), 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes
+Route::get(__('routes.register'), 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post(__('routes.register'), 'Auth\RegisterController@register');
+
+// Password Reset Routes
+Route::get(__('routes.password.reset'), 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post(__('routes.password.email'), 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get(__('routes.password.reset').'/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post(__('routes.password.reset'), 'Auth\ResetPasswordController@reset');
+
+// Project Controller Routes
 Route::resource('projects', 'ProjectController');
-
-Auth::routes();

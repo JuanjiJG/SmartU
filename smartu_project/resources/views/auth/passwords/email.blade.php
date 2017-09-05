@@ -4,6 +4,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            <p><a class="btn btn-default" href="{{ route('index') }}"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Volver</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Recuperar contraseña</div>
 
@@ -18,7 +23,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Correo electrónico</label>
+                            <label for="email" class="col-md-4 control-label">Correo electrónico *</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>

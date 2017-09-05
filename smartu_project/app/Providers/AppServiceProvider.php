@@ -1,9 +1,11 @@
 <?php
 
-namespace SmartU\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,9 +14,16 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Request $request)
     {
+        // Set the default string length to avoid an error from using MariaDB
         Schema::defaultStringLength(191);
+
+        // Set the app locale according to the URL
+        app()->setLocale($request->segment(1));
+
+        // Set the Carbon locale according to the app locale
+        Carbon::setLocale($this->app->getLocale());
     }
 
     /**

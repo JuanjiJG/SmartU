@@ -1,12 +1,25 @@
 <?php
 
-namespace SmartU\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use SmartU\Project;
+use Auth;
+use App\Project;
+use App\Http\Requests\CreateProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 
 class ProjectController extends Controller
 {
+    /**
+    * Create a new controller instance.
+    *
+    * @return void
+    */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +27,12 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::orderBy('created_at', 'desc')->get();
-        return view('projects.index')->with('projects', $projects);
+        $title = 'Proyectos';
+        // Avoid the excesive amount of queries when fetching the user data from a project.
+        // Using with() when getting the data fixes the performance issue.
+        $projects = Project::with('user')->orderBy('id', 'desc')->paginate(9);
+    
+        return view('projects.index')->with(['projects' => $projects, 'title' => $title]);
     }
 
     /**
@@ -25,7 +42,10 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Crear un nuevo proyecto';
+        $project = new Project();
+
+        return view('projects.form')->with(['title' => $title, 'project' => $project]);
     }
 
     /**
@@ -34,9 +54,18 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateProjectRequest $request)
     {
-        //
+        $project = new Project;
+        $project->fill(
+            $request->only('name', 'description')
+        );
+        $project->user_id = $request->user()->id;
+        $project->save();
+        
+        session()->flash('message_success', '¡El proyecto se ha creado correctamente!');
+
+        return redirect()->route('projects.index');
     }
 
     /**
@@ -45,10 +74,11 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Project $project)
     {
-        $project = Project::find($id);
-        return view('projects.show')->with('project', $project);
+        $title = $project->name;
+        
+        return view('projects.show')->with(['project' => $project, 'title' => $title]);
     }
 
     /**
@@ -57,9 +87,15 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        if ($project->user_id != Auth::user()->id) {
+            return redirect()->route('projects.show', ['project' => $project->id]);
+        }
+        
+        $title = 'Editar proyecto';
+
+        return view('projects.form')->with(['project' => $project, 'title' => $title]);
     }
 
     /**
@@ -69,9 +105,15 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $project->update(
+            $request->only('name', 'description', 'url')
+        );
+
+        session()->flash('message_success', '¡El proyecto se ha editado correctamente!');
+
+        return redirect()->route('projects.show', ['project' => $project->id]);
     }
 
     /**
@@ -80,8 +122,16 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        if ($project->user_id != Auth::user()->id) {
+            return redirect()->route('projects.show', ['project' => $project->id]);
+        }
+
+        $project->delete();
+
+        session()->flash('message_warning', '¡El proyecto se ha eliminado correctamente!');
+
+        return redirect()->route('projects.index');
     }
 }

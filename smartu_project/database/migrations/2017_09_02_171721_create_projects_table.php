@@ -17,9 +17,9 @@ class CreateProjectsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
-            $table->string('web')->nullable();
-            $table->string('location')->nullable();
-            $table->string('coordinates')->nullable();
+            $table->string('url')->nullable();
+            // $table->string('location')->nullable();
+            // $table->string('coordinates')->nullable();
             $table->integer('user_id')->unsigned();
             // $table->integer('starred_image_id')->unsigned();
             $table->timestamps();
