@@ -4,22 +4,22 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 col-md-7 col-md-offset-0">
-                <h2 class="page-header">Bienvenid@ a SmartU<br><small>¿Qué idea tienes en mente?</small></h2>
+                <h2 class="page-header">{!! __("Welcome to SmartU<br><small>What ideas have in your mind?</small>") !!}</h2>
                 <div class="well text-center">
                     <br>
-                    <p class="lead"><i class="fa fa-file-text fa-lg" aria-hidden="true"></i> <b>Sube proyectos</b> y recibe opiniones de los usuarios.</p>
+                    <p class="lead"><i class="fa fa-file-text fa-lg" aria-hidden="true"></i> {!! __("<b>Upload projects</b> and get user opinions.") !!}</p>
                     <br>
-                    <p class="lead"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> <b>Conecta con la gente</b> a través de tus ideas.</p>
+                    <p class="lead"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> {!! __("<b>Connect with people</b> through your ideas.") !!}</p>
                     <br>
-                    <p class="lead"><i class="fa fa-heart fa-lg" aria-hidden="true"></i> <b>Encuentra proyectos</b> acordes a tus intereses.</p>
+                    <p class="lead"><i class="fa fa-heart fa-lg" aria-hidden="true"></i> {!! __("<b>Find projects</b> tailored to your interests.") !!}</p>
                 </div>
                 <ul class="list-inline text-center">
-                    <li><p><a class="btn btn-success" href="{{ route('login') }}" role="button">Inicia sesión</a></p></li>
-                    <li><p><a class="btn btn-info" href="{{ route('dashboard') }}" role="button">Accede como invitado</a></p></li>
+                    <li><p><a class="btn btn-success" href="{{ route('login') }}" role="button">{{ __("Log in") }}</a></p></li>
+                    <li><p><a class="btn btn-info" href="{{ route('dashboard') }}" role="button">{{ __("Enter as guest") }}</a></p></li>
                 </ul>
             </div>
             <div class="col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0">
-                <h2 class="page-header">Regístrate ahora<br><small>¡Es gratis!</small></h2>
+                <h2 class="page-header">{!! __("Register now<br><small>It's free!</small>") !!}</h2>
                 @include('auth._registerform')
             </div>
         </div>

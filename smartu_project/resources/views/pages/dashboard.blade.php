@@ -17,7 +17,7 @@
                             <a href="#"><span class="label label-warning">Warning</span></a>
                             <a href="#"><span class="label label-danger">Danger</span></a>
                             <a href="#"><h4>Project name</h4></a>
-                            <small><em>{{ __('dashboard.by') }} <a href="">John Doe</a></em></small>
+                            <small>{{ __('dashboard.by') }} <a href="">John Doe</a></small>
                         </div>
                         <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0 col-md-4">
                                 <a href="#" class="thumbnail"><img src="{{ asset('images/projects/default.jpg') }}"></a>
@@ -36,7 +36,7 @@
                             <a href="#"><span class="label label-warning">Warning</span></a>
                             <a href="#"><span class="label label-danger">Danger</span></a>
                             <a href="#"><h4>Project name</h4></a>
-                            <small><em>{{ __('dashboard.by') }} <a href="">John Doe</a></em></small>
+                            <small>{{ __('dashboard.by') }} <a href="">John Doe</a></small>
                         </div>
                         <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0 col-md-4">
                                 <a href="#" class="thumbnail"><img src="{{ asset('images/projects/default.jpg') }}"></a>
@@ -51,11 +51,11 @@
                             <img src="{{ asset('images/avatars/default.jpg') }}" class="img-circle img-responsive">
                         </div>
                         <div class="col-xs-12">
-                            <small><em>{{ __('dashboard.by') }} <a href="#">John Doe</a></em></small>
+                            <small>{{ __('dashboard.by') }} <a href="#">John Doe</a></small>
                         </div>
                         <div class="col-xs-12">
                             <blockquote>
-                                <em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."</em>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
                             </blockquote>
                         </div>
                     </div>
@@ -68,11 +68,11 @@
                             <img src="{{ asset('images/avatars/default.jpg') }}" class="img-circle img-responsive">
                         </div>
                         <div class="col-xs-12">
-                            <small><em>{{ __('dashboard.by') }} <a href="#">John Doe</a></em></small>
+                            <small>{{ __('dashboard.by') }} <a href="#">John Doe</a></small>
                         </div>
                         <div class="col-xs-12">
                             <blockquote>
-                                <em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."</em>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
                             </blockquote>
                         </div>
                     </div>
@@ -85,11 +85,11 @@
                             <img src="{{ asset('images/avatars/default.jpg') }}" class="img-circle img-responsive">
                         </div>
                         <div class="col-xs-12">
-                            <small><em>{{ __('dashboard.by') }} <a href="#">John Doe</a></em></small>
+                            <small>{{ __('dashboard.by') }} <a href="#">John Doe</a></small>
                         </div>
                         <div class="col-xs-12">
                             <blockquote>
-                                <em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."</em>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
                             </blockquote>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                             <a href="#"><span class="label label-warning">Warning</span></a>
                             <a href="#"><span class="label label-danger">Danger</span></a>
                             <a href="#"><h4>Project name</h4></a>
-                            <small><em>{{ __('dashboard.by') }} <a href="#">John Doe</a></em></small>
+                            <small>{{ __('dashboard.by') }} <a href="#">John Doe</a></small>
                             <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae.</p>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                             <a href="#"><span class="label label-warning">Warning</span></a>
                             <a href="#"><span class="label label-danger">Danger</span></a>
                             <a href="#"><h4>Project name</h4></a>
-                            <small><em>{{ __('dashboard.by') }} <a href="#">John Doe</a></em></small>
+                            <small>{{ __('dashboard.by') }} <a href="#">John Doe</a></small>
                             <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae.</p>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                             <a href="#"><span class="label label-warning">Warning</span></a>
                             <a href="#"><span class="label label-danger">Danger</span></a>
                             <a href="#"><h4>Project name</h4></a>
-                            <small><em>{{ __('dashboard.by') }} <a href="#">John Doe</a></em></small>
+                            <small>{{ __('dashboard.by') }} <a href="#">John Doe</a></small>
                             <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae.</p>
                         </div>
                     </div>
