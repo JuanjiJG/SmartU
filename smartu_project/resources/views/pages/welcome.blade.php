@@ -32,7 +32,7 @@
             <div class="col-sm-8 col-md-4 vcenter">
                 <h4 class="text-primary"><i class="fa fa-lightbulb-o fa-4x" aria-hidden="true"></i></h4>
                 <h3>{{ __("Shape your big ideas") }}</h3>
-                <p class="lead">{{ __("a") }}</p>
+                <p class="lead text-justify">{{ __("a") }}</p>
             </div>
             <div class="col-sm-8 col-md-6 vcenter">
                 <img src="{{ asset('images/promo_1.png') }}" class=" img-thumbnail">
@@ -42,7 +42,7 @@
             <div class="col-sm-8 col-md-push-6 col-md-4 vcenter">
                 <h4 class="text-primary"><i class="fa fa-users fa-4x" aria-hidden="true"></i></h4>
                 <h3>{{ __("Open to everyone") }}</h3>
-                <p class="lead">{{ __("b") }}</p>
+                <p class="lead text-justify">{{ __("b") }}</p>
             </div>
             <div class="col-sm-8 col-md-pull-4 col-md-6 vcenter">
                 <img src="{{ asset('images/promo_1.png') }}" class=" img-thumbnail">
@@ -52,7 +52,7 @@
             <div class="col-sm-8 col-md-4 vcenter">
                 <h4 class="text-primary"><i class="fa fa-smile-o fa-4x" aria-hidden="true"></i></h4>
                 <h3>{{ __("Designed for the user") }}</h3>
-                <p class="lead">{{ __("c") }}</p>
+                <p class="lead text-justify">{{ __("c") }}</p>
             </div>
             <div class="col-sm-8 col-md-6 vcenter">
                 <img src="{{ asset('images/promo_3.png') }}" class=" img-thumbnail">

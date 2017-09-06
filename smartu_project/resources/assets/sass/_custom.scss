@@ -1,5 +1,21 @@
 body {
-    padding-top: 83px;
+    padding-top: 87px;
+}
+
+blockquote {
+    margin: 10px 0 0 !important;
+}
+
+.page-header {
+    margin: 10px 0 !important;
+}
+
+.profile-image {
+    max-height: 23px;
+    width: auto;
+    vertical-align: bottom;
+    float: left;
+    margin-right: 5px;
 }
 
 .row.display-flex {
@@ -9,18 +25,6 @@ body {
 .row.display-flex > [class*='col-'] {
     display: flex;
     flex-direction: column;
-}
-
-.page-header {
-    margin: 20px 0 !important;
-}
-
-.profile-image {
-    max-height: 23px;
-    width: auto;
-    vertical-align: bottom;
-    float: left;
-    margin-right: 5px;
 }
 
 .vcenter {

@@ -21,14 +21,14 @@
 <body>
     <div id="app">
         <header>
-            @include('layouts.header')
+            @include('layouts._header')
         </header>
         <main>
             @include('layouts._messages')
             @yield('content')
         </main>
         <footer>
-            @include('layouts.footer')
+            @include('layouts._footer')
         </footer>
     </div>
     <!-- Scripts -->
