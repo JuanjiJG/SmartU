@@ -3,15 +3,17 @@
 @section('content')
 <div class="container">
     <div class="row">
+        {{-- Project Title Header --}}
         <div class="col-sm-12">
             <h3 class="page-header">
-                {{ $project->name }} <small>{{ __('projects.by') }} <a href="">John Doe</a></small>
+                {{ $project->name }} <small>{{ __('projects.by') }} <a href="">{{ $project->user->first_name . ' ' . $project->user->last_name }}</a></small>
                 <br>
                 <small>{{ __('projects.updated') }} {{ $project->updated_at->diffforhumans() }}</small>
             </h3>
         </div>
     </div>
     <div class="row">
+        {{-- Description Panel --}}
         <div class="col-md-8">
             <div class="panel panel-primary">
                 <div class="panel-heading">{{ __('projects.description') }}</div>
@@ -23,6 +25,7 @@
         <div class="col-md-4">
             <div class="row">
                 <div class="col-sm-6 col-md-12">
+                    {{-- Project Basic Info Panel --}}
                     <div class="panel panel-success">
                         <div class="panel-heading">{{ __('projects.info') }}</div>
                         <div class="panel-body">
@@ -55,6 +58,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- Project Members Panel --}}
                 <div class="col-sm-6 col-md-12">
                     <div class="panel panel-warning">
                         <div class="panel-heading">{{ __('projects.members') }}</div>
@@ -63,6 +67,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- Project Available Vacancies Panel --}}
                 <div class="col-sm-6 col-md-12">
                     <div class="panel panel-warning">
                         <div class="panel-heading">{{ __('projects.vacancies') }}</div>
@@ -75,6 +80,7 @@
         </div>
     </div>
     <div class="row">
+        {{-- Project Progress Section --}}
         <div class="col-md-6">
             <h3 class="page-header">{{ __('projects.progress') }}</h3>
             <div class="row">
@@ -108,54 +114,62 @@
                 </div>
             </div>
         </div>
+        {{-- Project Comments Section --}}
         <div class="col-md-6">
             <h3 class="page-header">{{ __('projects.comments') }}</h3>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="col-xs-9 col-sm-10">
-                        <div class="panel panel-primary text-right">
-                            <div class="panel-heading">
-                                <b>John Doe</b> - Hace 3 minutos
+                @if (count($project->comments) > 0)
+                    @foreach ($project->comments as $comment)
+                        {{-- Single Project Comment Panel --}}
+                        <div class="col-md-12">
+                            <div class="col-xs-9 col-sm-10">
+                                <div class="panel panel-primary text-right">
+                                    <div class="panel-heading">
+                                        <b>{{ $comment->user->first_name . ' ' . $comment->user->last_name }}</b> - {{ $comment->created_at->diffforhumans() }}
+                                    </div>
+                                    <div class="panel-body text-justify">
+                                        {{ $comment->content }}
+                                    </div>
+                                </div>
                             </div>
-                            <div class="panel-body text-justify">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis vehicula interdum. Nam in ex facilisis, varius ante sed, cursus mi.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-3 col-sm-2">
-                        <a href="#"><img class="img-responsive img-circle" src="{{ asset('images/avatars/default.jpg') }}"></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="col-xs-9 col-sm-10">
-                        <div class="panel panel-primary text-right">
-                            <div class="panel-heading">
-                                <b>John Doe</b> - Hace 3 minutos
-                            </div>
-                            <div class="panel-body text-justify">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis vehicula interdum. Nam in ex facilisis, varius ante sed, cursus mi.
+                            {{-- User Avatar --}}
+                            <div class="col-xs-3 col-sm-2">
+                                <a href="#"><img class="img-responsive img-circle" src="{{ asset('images/avatars/' . $comment->user->avatar) }}"></a>
                             </div>
                         </div>
+                    @endforeach
+                @else
+                    <div class="col-md-12 text-center">
+                        <div class="well well-sm">
+                            <h6>{{ __('projects.no_comments')}}</h6>
+                            <h6>{{ __('projects.be_first') }}</h6>
+                        </div>
                     </div>
-                    <div class="col-xs-3 col-sm-2">
-                        <a href="#"><img class="img-responsive img-circle" src="{{ asset('images/avatars/default.jpg') }}"></a>
-                    </div>
-                </div>
+                @endif
+                {{-- Publish New Comment Panel --}}
                 <div class="col-xs-12">
                     <div class="col-xs-9 col-sm-10">
                         <div class="panel panel-info text-right">
-                            <div class="panel-heading"><b>Jane Doe</b>, {{ __('projects.publish') }}</div>
+                            <div class="panel-heading">
+                                <b>
+                                    @if (Auth::check())
+                                        {{ Auth::user()->first_name }}
+                                    @else
+                                        {{ __('projects.guest') }}
+                                    @endif
+                                </b>, {{ __('projects.publish') }}
+                            </div>
                             <div class="panel-body">
-                                <form class="form-horizontal" action="index.html" method="post">
+                                <form class="form-horizontal" action="{{ route('comments.store', ['project' => $project->id]) }}" method="post">
                                     {{ csrf_field() }}
 
-                                    <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
+                                    <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                                         <div class="col-md-12">
-                                            <textarea style="resize:vertical" id="comment" rows="3" class="form-control" name="comment" required></textarea>
+                                            <textarea style="resize:vertical" id="content" rows="3" class="form-control" name="content" required></textarea>
 
-                                            @if ($errors->has('comment'))
+                                            @if ($errors->has('content'))
                                                 <span class="help-block">
-                                                    <strong>{{ $errors->first('comment') }}</strong>
+                                                    <strong>{{ $errors->first('content') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
@@ -170,8 +184,13 @@
                             </div>
                         </div>
                     </div>
+                    {{-- Current User Avatar --}}
                     <div class="col-xs-3 col-sm-2">
-                        <a href="#"><img class="img-responsive img-circle" src="{{ asset('images/avatars/default.jpg') }}"></a>
+                        @if (Auth::check())
+                            <a href="#"><img class="img-responsive img-circle" src="{{ asset('images/avatars/' . Auth::user()->avatar) }}"></a>
+                        @else
+                            <a href="#"><img class="img-responsive img-circle" src="{{ asset('images/avatars/default.jpg') }}"></a>
+                        @endif
                     </div>
                 </div>
             </div>

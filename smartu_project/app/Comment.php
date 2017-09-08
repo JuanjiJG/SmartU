@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Comment extends Model
 {
-    protected $with = ['comments'];
-
+    protected $with = ['user'];
+    
     protected $fillable = [
-        'name', 'description', 'url',
+        'content',
     ];
 
     public function user()
@@ -17,8 +17,8 @@ class Project extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function comments()
+    public function project()
     {
-        return $this->hasMany(Comment::class);
+        return $this->belongsTo(Project::class);
     }
 }

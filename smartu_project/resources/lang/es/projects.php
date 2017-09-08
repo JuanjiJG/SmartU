@@ -19,5 +19,8 @@ return [
     'comment' => 'Comentar',
     'publish' => '¡publica un comentario!',
     'published_by' => 'Publicado por',
+    'guest' => 'Invitad@',
+    'no_comments' => 'No hay comentarios en este proyecto.',
+    'be_first' => '¡Sé el primero en dejar uno!',
 
 ];

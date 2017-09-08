@@ -19,5 +19,8 @@ return [
     'comment' => 'Comment',
     'publish' => '¡share a comment!',
     'published_by' => 'Published by',
+    'guest' => 'Guest',
+    'no_comments' => 'No comments on this project yet.',
+    'be_first' => 'Be the first to make one!',
 
 ];
