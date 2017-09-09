@@ -21,4 +21,9 @@ class Project extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function progresses()
+    {
+        return $this->hasMany(Progress::class)->orderBy('id', 'desc');
+    }
 }

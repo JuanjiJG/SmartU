@@ -82,36 +82,100 @@
     <div class="row">
         {{-- Project Progress Section --}}
         <div class="col-md-6">
-            <h3 class="page-header">{{ __('projects.progress') }}</h3>
+            <h3 class="page-header">{{ __('projects.progresses') }}</h3>
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="well">
-                      <div class="row">
-                          <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0">
-                              <a href="#" class="thumbnail"><img src="{{ asset('images/projects/default.jpg') }}"></a>
-                          </div>
-                          <div class="col-sm-8">
-                              <h4>¡Nuevo avance!</h4>
-                              <small>Hace 2 días - Publicado por <a href="#">John Doe</a></small>
-                              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae.</p>
-                          </div>
-                      </div>
+                {{-- Single Project Progress Section --}}
+                @if (count($project->progresses) > 0)
+                    @foreach ($project->progresses as $progress)
+                        <div class="col-sm-12">
+                            <div class="well">
+                              <div class="row">
+                                  <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0">
+                                      <a class="thumbnail"><img src="{{ asset('images/progresses/' . $progress->image) }}"></a>
+                                  </div>
+                                  <div class="col-sm-8">
+                                      <h4>{{ $progress->name }}</h4>
+                                      <small>{{ ucfirst($progress->created_at->diffforhumans()) }} - {{ __('projects.published_by') }} <a href="#">{{ $progress->user->first_name . ' ' . $progress->user->last_name }}</a></small>
+                                      <p class="lead">{{ $progress->description }}</p>
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    {{-- No Progress Yet Panel --}}
+                    <div class="col-sm-12 text-center">
+                        <div class="well well-sm">
+                            <h6>{{ __('projects.no_progress')}}</h6>
+                            @if (Auth::check() && (Auth::user()->id == $project->user->id))
+                                <h6>{{ __('projects.be_first_progress') }}</h6>
+                            @endif
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="well">
-                      <div class="row">
-                          <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0">
-                              <a href="#" class="thumbnail"><img src="{{ asset('images/projects/default.jpg') }}"></a>
-                          </div>
-                          <div class="col-sm-8">
-                              <h4>¡Nuevo avance!</h4>
-                              <small>Hace 2 días - {{ __('projects.published_by') }} <a href="#">John Doe</a></small>
-                              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae.</p>
-                          </div>
-                      </div>
+                @endif
+                @if (Auth::check() && (Auth::user()->id == $project->user->id))
+                    {{-- Upload Progress Form --}}
+                    <div class="col-xs-12">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <b>{{ Auth::user()->first_name }}</b>, {{ __('projects.progress_publish') }}
+                            </div>
+                            <div class="panel-body">
+                                <form class="form-horizontal" action="{{ route('progress.store', ['project' => $project->id]) }}" method="post" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+
+                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                        <label for="name" class="col-md-4 control-label">Nombre *</label>
+
+                                        <div class="col-md-6">
+                                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+
+                                            @if ($errors->has('name'))
+                                                <span class="help-block">name
+                                                    <strong>{{ $errors->first('name') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                                        <label for="description" class="col-md-4 control-label">Descripción *</label>
+
+                                        <div class="col-md-6">
+                                            <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" required>
+
+                                            @if ($errors->has('description'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('description') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                                        <label for="image" class="col-md-4 control-label">Imagen</label>
+
+                                        <div class="col-md-6">
+                                            <input id="image" type="file" class="form-control" name="image">
+
+                                            @if ($errors->has('image'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('image') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-md-offset-4">
+                                            <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o fa-fw" aria-hidden="true"></i> {{ __('projects.save') }}</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
         {{-- Project Comments Section --}}
@@ -125,7 +189,7 @@
                             <div class="col-xs-9 col-sm-10">
                                 <div class="panel panel-primary text-right">
                                     <div class="panel-heading">
-                                        <b>{{ $comment->user->first_name . ' ' . $comment->user->last_name }}</b> - {{ $comment->created_at->diffforhumans() }}
+                                        <b>{{ $comment->user->first_name . ' ' . $comment->user->last_name }}</b> - {{ ucfirst($comment->created_at->diffforhumans()) }}
                                     </div>
                                     <div class="panel-body text-justify">
                                         {{ $comment->content }}
@@ -151,57 +215,51 @@
                     <div class="col-md-12 text-center">
                         <div class="well well-sm">
                             <h6>{{ __('projects.no_comments')}}</h6>
-                            <h6>{{ __('projects.be_first') }}</h6>
+                            @if (Auth::check())
+                                <h6>{{ __('projects.be_first') }}</h6>
+                            @endif
                         </div>
                     </div>
                 @endif
                 {{-- Publish New Comment Panel --}}
-                <div class="col-xs-12">
-                    <div class="col-xs-9 col-sm-10">
-                        <div class="panel panel-info text-right">
-                            <div class="panel-heading">
-                                <b>
-                                    @if (Auth::check())
-                                        {{ Auth::user()->first_name }}
-                                    @else
-                                        {{ __('projects.guest') }}
-                                    @endif
-                                </b>, {{ __('projects.publish') }}
-                            </div>
-                            <div class="panel-body">
-                                <form class="form-horizontal" action="{{ route('comments.store', ['project' => $project->id]) }}" method="post">
-                                    {{ csrf_field() }}
+                @if (Auth::check())
+                    <div class="col-xs-12">
+                        <div class="col-xs-9 col-sm-10">
+                            <div class="panel panel-info text-right">
+                                <div class="panel-heading">
+                                    <b>{{ Auth::user()->first_name }}</b>, {{ __('projects.publish') }}
+                                </div>
+                                <div class="panel-body">
+                                    <form class="form-horizontal" action="{{ route('comments.store', ['project' => $project->id]) }}" method="post">
+                                        {{ csrf_field() }}
 
-                                    <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
-                                        <div class="col-md-12">
-                                            <textarea style="resize:vertical" id="content" rows="3" class="form-control" name="content" required></textarea>
+                                        <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+                                            <div class="col-md-12">
+                                                <textarea style="resize:vertical" id="content" rows="3" class="form-control" name="content" required></textarea>
 
-                                            @if ($errors->has('content'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('content') }}</strong>
-                                                </span>
-                                            @endif
+                                                @if ($errors->has('content'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('content') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn btn-info">{{ __('projects.comment') }}</button>
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <button type="submit" class="btn btn-info">{{ __('projects.comment') }}</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    {{-- Current User Avatar --}}
-                    <div class="col-xs-3 col-sm-2">
-                        @if (Auth::check())
+                        {{-- Current User Avatar --}}
+                        <div class="col-xs-3 col-sm-2">
                             <a href="#"><img class="img-responsive img-circle" src="{{ asset('images/avatars/' . Auth::user()->avatar) }}"></a>
-                        @else
-                            <a href="#"><img class="img-responsive img-circle" src="{{ asset('images/avatars/default.jpg') }}"></a>
-                        @endif
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>

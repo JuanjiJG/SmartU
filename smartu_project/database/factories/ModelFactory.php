@@ -45,3 +45,12 @@ $factory->define(App\Comment::class, function (Faker $faker) {
         // }
     ];
 });
+
+$factory->define(App\Progress::class, function (Faker $faker) {
+    return [
+        'content' => $faker->paragraph,
+        // 'user_id' => function () {
+        //     return factory(App\User::class)->create()->id;
+        // }
+    ];
+});
