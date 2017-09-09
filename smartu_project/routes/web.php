@@ -43,4 +43,4 @@ Route::resource('projects', 'ProjectController');
 
 // Comment Controller Routes
 Route::post('projects/{project}/comment', 'CommentController@store')->name('comments.store');
-Route::delete('projects/{project}/comment/{comment}', 'CommentController@store')->name('comments.destroy');
+Route::delete('comment/{comment}', 'CommentController@destroy')->name('comments.destroy');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\Project;
 use App\Comment;
 use App\Http\Requests\CreateCommentRequest;
@@ -29,9 +30,11 @@ class CommentController extends Controller
     {
         $project_id = $project->id;
         $comment = new Comment;
+        
         $comment->fill(
             $request->only('content')
         );
+
         $comment->user_id = $request->user()->id;
         $comment->project_id = $project_id;
         $comment->save();

@@ -130,6 +130,15 @@
                                     <div class="panel-body text-justify">
                                         {{ $comment->content }}
                                     </div>
+                                    @if (Auth::check() && (Auth::user()->id == $comment->user->id))
+                                        <div class="panel-footer">
+                                            <form action="{{ route('comments.destroy', ['comment' => $comment->id]) }}" method="post">
+                                                {{ csrf_field() }}
+                                                {{ method_field('delete') }}
+                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash fa-fw" aria-hidden="true"></i> {{ __('projects.delete') }}</button>
+                                            </form>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                             {{-- User Avatar --}}

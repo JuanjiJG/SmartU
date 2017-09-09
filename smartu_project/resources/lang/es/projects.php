@@ -17,6 +17,7 @@ return [
     'progress' => 'Avances',
     'comments' => 'Comentarios',
     'comment' => 'Comentar',
+    'delete' => 'Borrar',
     'publish' => '¡publica un comentario!',
     'published_by' => 'Publicado por',
     'guest' => 'Invitad@',

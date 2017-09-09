@@ -17,6 +17,7 @@ return [
     'progress' => 'Progress',
     'comments' => 'Comments',
     'comment' => 'Comment',
+    'delete' => 'Delete',
     'publish' => '¡share a comment!',
     'published_by' => 'Published by',
     'guest' => 'Guest',
