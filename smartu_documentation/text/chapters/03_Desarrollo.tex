@@ -190,50 +190,44 @@ Se quiere implementar un sistema de información basado en web que sea capaz de 
     \item[RS4.] Los usuarios solo pueden modificar o eliminar proyectos de los que son propietarios.
     \item[RS5.] Un usuario puede solicitar unirse al proyecto si hay vacantes y si no es ya propietario o colaborador.
     \item[RS6.] Un usuario no puede seguirse a sí mismo.
-    \item[RS7.] Los usuarios con correo corporativo reconocido serán registrados automáticamente como usuarios ``verificados''.
+    \item[RS7.] Un usuario no puede dar Buena Idea a su/s propio/s proyecto/s.
+    \item[RS8.] Los usuarios con correo corporativo reconocido serán registrados automáticamente como usuarios ``verificados''.
 \end{description}
 
 \subsection*{Requisitos funcionales}
 \subsubsection{Requisitos funcionales de inserción}
 \begin{description}
-    \item[RF1.]
-    \item[RF2.]
-    \item[RF3.]
-    \item[RF4.]
-    \item[RF5.]
-    \item[RF6.]
-    \item[RF7.]
-    \item[RF8.]
-    \item[RF9.]
-    \item[RF10.]
+    \item[RF1. Registrar usuario:] un usuario invitado puede registrarse en el sistema para poder utilizar el resto de funcionalidades.
+    \item[RF2. Crear proyecto:] Un usuario registrado puede crear un nuevo proyecto en el sistema para dar a conocer su idea.
+    \item[RF3. Dar Buena Idea:] Un usuario puede dar un Buena Idea a un proyecto
+    \item[RF4. Dejar un comentario:] Un usuario registrado puede dejar un comentario en un proyecto.
+    \item[RF5. Elegir áreas de interés:] Un usuario registrado puede seleccionar una o más áreas que sean de su interés para encontrar proyectos afines.
+    \item[RF6. Seguir a un usuario:] Un usuario registrado en el sistema puede seguir a otro usuario para estar al tanto de su actividad en la aplicación.
+    \item[RF7. Crear vacante:] Un usuario propietario de un proyecto puede crear una vacante para buscar colaboradores para su proyecto.
+    \item[RF8. Solicitar colaboración:] Un usuario puede solicitar colaborar en un proyecto que no sea suyo si éste tiene una vacante disponible.
+    \item[RF9. Insertar avance:] Un usuario propietario de un proyecto puede crear un avance de un proyecto que muestre algun tipo de progreso.
+    \item[RF10. Insertar nuevo colaborador:] Un usuario propietario de un proyecto puede aceptar o rechazar una petición de colaboración para una vacante.
 \end{description}
 
 \subsubsection{Requisitos funcionales de consulta}
 \begin{description}
-    \item[RF1.]
-    \item[RF2.]
-    \item[RF3.]
-    \item[RF4.]
-    \item[RF5.]
-    \item[RF6.]
-    \item[RF7.]
-    \item[RF8.]
-    \item[RF9.]
-    \item[RF10.]
+    \item[RF11. Listar solicitudes:] Un usuario propietario de un proyecto puede listar las solicitudes de colaboración en su proyecto pendientes de aprobación.
+    \item[RF12. Listar vacantes:] Cualquier usuario puede listar las vacantes existentes para un proyecto.
+    \item[RF13. Listar avances:] Cualquier usuario puede listar los avances realizados en un proyecto.
+    \item[RF14. Listar proyectos:] Cualquier usuario puede listar los proyectos existentes en la aplicación.
+    \item[RF15. Listar usuarios:] Cualquier usuario puede listar usuarios registrados en la aplicación.
+    \item[RF16. Listar comentarios:] Cualquier usuario puede listar los comentarios de un proyecto.
+    \item[RF17. Listar áreas:] Cualquier usuario puede listar las áreas disponibles en el sistema.
+    \item[RF18. Listar colaboradores:] Cualquier usuario puede listar los colaboradores actuales de un proyecto.
+    \item[RF19. Consultar detalles de un proyecto:] Cualquier usuario puede ver los detalles de un proyecto.
+    \item[RF20. Consultar detalles de un usuario:] Cualquier usuario puede ver el perfil de otro usuario registrado en la aplicación.
 \end{description}
 
 \subsubsection{Requisitos funcionales de eliminación}
 \begin{description}
-    \item[RF1.]
-    \item[RF2.]
-    \item[RF3.]
-    \item[RF4.]
-    \item[RF5.]
-    \item[RF6.]
-    \item[RF7.]
-    \item[RF8.]
-    \item[RF9.]
-    \item[RF10.]
+    \item[RF21. Eliminar áreas de interés:] Un usuario registrado puede modificar su perfil y eliminar una o varias áreas que sean de su interés.
+    \item[RF22. Eliminar Buena Idea de un proyecto:] Un usuario puede eliminar el Buena Idea que le ha dado a un proyecto.
+    \item[RF23. Dejar de seguir a un usuario:] Un usuario registrado puede dejar de seguir a otro usuario registrado en el sistema.
 \end{description}
 
 \subsection*{Requisitos no funcionales}
