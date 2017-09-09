@@ -20,4 +20,4 @@ doc:
 .PHONY: clean
 clean:
 	@echo "Limpiando archivos de compilación..."
-	@rm -fv *.aux *.lof *.log *.lol *.lot *.out *.synctex.gz *.toc
+	@rm -fv *.aux *.lof *.log *.lol *.lot *.out *.synctex.gz *.toc *.glo *.glsdefs *.ist
