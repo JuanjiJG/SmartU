@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <br>
-            <img src="{{ asset('images/logo.png') }}" class="img-responsive">
+            <img src="{{ asset('images/promo/logo.png') }}" class="img-responsive">
             <br>
         </div>
     </div>
