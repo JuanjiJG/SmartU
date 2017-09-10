@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Project;
+use App\Area;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 
@@ -31,7 +32,7 @@ class ProjectController extends Controller
         // Avoid the excesive amount of queries when fetching the user data from a project.
         // Using with() when getting the data fixes the performance issue.
         $projects = Project::with('user')->orderBy('id', 'desc')->paginate(9);
-    
+
         return view('projects.index')->with(['projects' => $projects, 'title' => $title]);
     }
 
@@ -62,10 +63,10 @@ class ProjectController extends Controller
         );
         $project->user_id = $request->user()->id;
         $project->save();
-        
+
         session()->flash('message_success', '¡El proyecto se ha creado correctamente!');
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.show', ['project' => $project->id]);
     }
 
     /**
@@ -76,9 +77,10 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+        $all_areas = Area::all();
         $title = $project->name;
-        
-        return view('projects.show')->with(['project' => $project, 'title' => $title]);
+
+        return view('projects.show')->with(['project' => $project, 'title' => $title, 'all_areas' => $all_areas]);
     }
 
     /**
@@ -92,7 +94,7 @@ class ProjectController extends Controller
         if ($project->user_id != Auth::user()->id) {
             return redirect()->route('projects.show', ['project' => $project->id]);
         }
-        
+
         $title = 'Editar proyecto';
 
         return view('projects.form')->with(['project' => $project, 'title' => $title]);

@@ -11,7 +11,7 @@
                 <small>{{ __('projects.updated') }} {{ $project->updated_at->diffforhumans() }}</small>
             </h3>
         </div>
-    </div>
+    </div> {{-- Row --}}
     <div class="row">
         {{-- Description Panel --}}
         <div class="col-md-8">
@@ -57,6 +57,14 @@
                                 </li>
                             </ul>
                         </div>
+                        @if (Auth::check() && (Auth::user()->id == $project->user_id))
+                            <div class="panel-footer">
+                                {{-- Button Trigger Modal --}}
+                                <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#add-area-modal">
+                                    <i class="fa fa-plus fa-fw" aria-hidden="true"></i> {{ __('projects.add_area') }}
+                                </button>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 {{-- Project Members Panel --}}
@@ -79,7 +87,55 @@
                 </div>
             </div>
         </div>
-    </div>
+        @if (Auth::check() && (Auth::user()->id == $project->user_id))
+            <!-- Modals -->
+            <div class="modal fade" id="add-area-modal" tabindex="-1" role="dialog" aria-labelledby="add-area-modal-label">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="add-area-modal-label">{{ __('projects.add_area') }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <form class="form-horizontal" action="{{ route('areas.update', ['project' => $project->id]) }}" method="post">
+                                        {{ csrf_field() }}
+                                        {{ method_field('put') }}
+
+                                        <div class="form-group">
+                                            <label for="areas[]" class="col-md-4 control-label">Áreas</label>
+
+                                            <div class="col-md-6">
+                                                @foreach ($all_areas as $one_area)
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="areas[]" value="{{ $one_area->id }}"
+                                                            @if (count($project->areas) && $project->areas->contains($one_area->id))
+                                                                checked
+                                                            @endif>
+                                                            {{ $one_area->name }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-6 col-md-offset-4">
+                                                <button type="submit" class="btn btn-info">{{ __('projects.save') }}</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('projects.discard') }}</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+    </div> {{-- Row --}}
     <div class="row">
         {{-- Project Progress Section --}}
         <div class="col-md-6">
@@ -263,28 +319,9 @@
                 @endif
             </div>
         </div>
-    </div>
-</div>
+    </div> {{-- Row --}}
+</div> {{-- Container --}}
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

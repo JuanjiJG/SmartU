@@ -13,6 +13,7 @@ return [
     'not_specified' => 'Not specified',
     'none' => 'None',
     'no_areas' => 'No areas',
+    'add_area' => 'Add area',
     'members' => 'Project Members',
     'vacancies' => 'Project Vacancies',
     'progresses' => 'Progresses',
@@ -20,6 +21,7 @@ return [
     'comment' => 'Comment',
     'delete' => 'Delete',
     'save' => 'Save',
+    'discard' => 'Discard',
     'publish' => '¡share a comment!',
     'progress_publish' => 'upload a progress!',
     'published_by' => 'Published by',
@@ -27,6 +29,6 @@ return [
     'no_comments' => 'No comments on this project yet.',
     'be_first' => 'Be the first to make one!',
     'no_progress' => 'This project has no progress yet.',
-    'be_first_progress' => 'Upload the first progress when you reach it!',
+    'be_first_progress' => 'Upload the first progress when you achieve it!',
 
 ];

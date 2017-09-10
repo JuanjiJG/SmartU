@@ -48,3 +48,6 @@ Route::delete('comment/{comment}', 'CommentController@destroy')->name('comments.
 // Progress Controller Routes
 Route::post('projects/{project}/progress', 'ProgressController@store')->name('progress.store');
 Route::delete('progress/{progress}', 'ProgressController@destroy')->name('progress.destroy');
+
+// Area Controller Routes
+Route::put('project/{project}/areas', 'AreaController@update')->name('areas.update');
