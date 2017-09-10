@@ -28,9 +28,12 @@
 
 % Otros paquetes importantes para el proyecto
 \usepackage{url}
+\usepackage{eurosym}
 \usepackage{graphicx}
+\usepackage{colortbl}
 \usepackage{fancyhdr}
 \usepackage{pdfpages}
+\usepackage{longtable}
 \usepackage[hidelinks]{hyperref}
 
 % Añade aquí las carpetas de imágenes para que el compilador las pueda analizar
@@ -71,6 +74,9 @@
 \fancyhead[RE]{\rightmark}
 \fancyhead[RO,LE]{\textbf{\thepage}}
 \setlength{\headheight}{1.5\headheight}
+
+% Definición de colores
+\definecolor{Gray}{gray}{0.9}
 
 % Redefinición de comandos
 \renewcommand{\chaptermark}[1]{\markboth{\textbf{#1}}{}}
