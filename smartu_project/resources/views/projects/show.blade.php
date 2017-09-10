@@ -47,12 +47,13 @@
                                 </li>
                                 <li>
                                     <b>{{ __('projects.areas') }}:</b><br>
-                                    <a href="#"><span class="label label-default">Default</span></a>
-                                    <a href="#"><span class="label label-primary">Primary</span></a>
-                                    <a href="#"><span class="label label-success">Success</span></a>
-                                    <a href="#"><span class="label label-info">Info</span></a>
-                                    <a href="#"><span class="label label-warning">Warning</span></a>
-                                    <a href="#"><span class="label label-danger">Danger</span></a>
+                                    @if (count($project->areas) > 0)
+                                        @foreach ($project->areas as $area)
+                                            <a href="#"><span class="label label-primary">{{ $area->name}}</span></a>
+                                        @endforeach
+                                    @else
+                                        <a><span class="label label-danger">Sin áreas</span></a>
+                                    @endif
                                 </li>
                             </ul>
                         </div>

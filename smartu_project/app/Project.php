@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $with = ['comments'];
+    protected $with = ['comments', 'areas'];
 
     protected $fillable = [
         'name', 'description', 'url',
@@ -25,5 +25,10 @@ class Project extends Model
     public function progresses()
     {
         return $this->hasMany(Progress::class)->orderBy('id', 'desc');
+    }
+
+    public function areas()
+    {
+        return $this->belongsToMany(Area::Class);
     }
 }
