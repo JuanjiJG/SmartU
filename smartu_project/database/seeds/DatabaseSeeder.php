@@ -11,31 +11,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // Manually insert the default areas for projects
         DB::table('areas')->insert([
             'name' => 'Informática',
             'description' => 'Proyectos para los amantes de la programación',
         ]);
-
         DB::table('areas')->insert([
             'name' => 'Diseño gráfico',
             'description' => '¿Fan del diseño y de la creatividad? Ésta es tu área.',
         ]);
-
         DB::table('areas')->insert([
             'name' => 'Arquitectura',
             'description' => 'Aquí se encuentran los proyectos que transforman las ciudades.',
         ]);
-
         DB::table('areas')->insert([
             'name' => 'Comunicaciones',
             'description' => 'Si lo tuyo es la información y comunicar, has venido al área adecuada.',
         ]);
-
         DB::table('areas')->insert([
             'name' => 'Audiovisuales',
             'description' => 'Para los que disfrutan creando contenido multimedia.',
         ]);
-
         DB::table('areas')->insert([
             'name' => 'Empresariales',
             'description' => '¿Buscas proyectos de ámbito empresarial? No busques más, están aquí.',
@@ -43,16 +39,23 @@ class DatabaseSeeder extends Seeder
 
         factory(App\Project::class, 10)->create()->each(
             function ($project) {
+                // Alternate areas between two cases: projects having 2 areas, or only one
                 $boolean = random_int(0, 1);
+
+                // This range is determined by all the areas inserted previously
                 $ids = range(1,6);
 
+                // Shuffle the IDs array to make it more "random"
                 shuffle($ids);
 
                 if ($boolean) {
+                    // Slice the array taking only two elements
                     $sliced = array_slice($ids, 0, 2);
 
+                    // Attach areas to project
                     $project->areas()->attach($sliced);
                 } else {
+                    // Attach only one area to the project
                     $project->areas()->attach(array_rand($ids, 1));
                 }
 
@@ -61,38 +64,5 @@ class DatabaseSeeder extends Seeder
                 factory(App\Progress::class)->create(['user_id' => $progress_rand, 'project_id' => $progress_rand]);
             }
         );
-
-
-
-
-
-
-
-
-
-        // factory(App\User::class, 10)->create()->each(
-        //     function($user) {
-        //         factory(App\Project::class)->create(['user_id' => $user->id])->each(
-        //             function ($project) {
-        //                 $boolean = random_int(0, 1);
-        //                 $ids = range(1,6);
-        //
-        //                 shuffle($ids);
-        //
-        //                 if ($boolean) {
-        //                     $sliced = array_slice($ids, 0, 2);
-        //
-        //                     $project->areas()->attach($sliced);
-        //                 } else {
-        //                     $project->areas()->attach(array_rand($ids, 1));
-        //                 }
-        //             }
-        //         );
-        //
-        //         factory(App\Comment::class)->create(['user_id' => rand(1, 50), 'project_id' => rand(1,50)]);
-        //         $progress_rand = rand(1,50);
-        //         factory(App\Progress::class)->create(['user_id' => $progress_rand, 'project_id' => $progress_rand]);
-        //     }
-        // );
     }
 }

@@ -52,7 +52,7 @@
                                             <a href="#"><span class="label label-primary">{{ $area->name}}</span></a>
                                         @endforeach
                                     @else
-                                        <a><span class="label label-danger">Sin áreas</span></a>
+                                        <a><span class="label label-danger">{{ __('projects.no_areas') }}</span></a>
                                     @endif
                                 </li>
                             </ul>

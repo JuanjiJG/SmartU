@@ -40,9 +40,6 @@ $factory->define(App\Project::class, function (Faker $faker) {
 $factory->define(App\Comment::class, function (Faker $faker) {
     return [
         'content' => $faker->paragraph,
-        // 'user_id' => function () {
-        //     return factory(App\User::class)->create()->id;
-        // }
     ];
 });
 
@@ -50,8 +47,5 @@ $factory->define(App\Progress::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence($nbWords = 2, $variableNbWords = false),
         'description' => $faker->paragraph,
-        // 'user_id' => function () {
-        //     return factory(App\User::class)->create()->id;
-        // }
     ];
 });

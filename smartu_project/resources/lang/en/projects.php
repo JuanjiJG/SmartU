@@ -12,6 +12,7 @@ return [
     'end' => 'End Date',
     'not_specified' => 'Not specified',
     'none' => 'None',
+    'no_areas' => 'No areas',
     'members' => 'Project Members',
     'vacancies' => 'Project Vacancies',
     'progresses' => 'Progresses',

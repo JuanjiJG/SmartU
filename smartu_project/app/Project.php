@@ -12,6 +12,7 @@ class Project extends Model
         'name', 'description', 'url',
     ];
 
+    // Defining relationships for this model
     public function user()
     {
         return $this->belongsTo(User::class);

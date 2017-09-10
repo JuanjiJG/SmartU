@@ -12,6 +12,7 @@ return [
     'end' => 'Fecha de finalización',
     'not_specified' => 'No especificada',
     'none' => 'Ninguno',
+    'no_areas' => 'Sin áreas',
     'members' => 'Integrantes del proyecto',
     'vacancies' => 'Vacantes del proyecto',
     'progresses' => 'Avances',
