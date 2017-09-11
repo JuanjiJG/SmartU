@@ -2,6 +2,12 @@
 
 return [
 
+    'title' => 'Projects',
+    'allprojects' => 'All projects',
+    'create' => 'Create project',
+    'details' => 'Details',
+    'no_projects' => 'No projects available',
+    'create_one' => 'Create one right now!',
     'updated' => 'Updated',
     'by' => 'by',
     'description' => 'Project Description',

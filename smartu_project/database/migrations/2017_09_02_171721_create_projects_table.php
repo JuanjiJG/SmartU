@@ -18,12 +18,10 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('url')->nullable();
-            // $table->string('location')->nullable();
-            // $table->string('coordinates')->nullable();
+            $table->string('image')->default('default.jpg');
             $table->integer('user_id')->unsigned();
-            // $table->integer('starred_image_id')->unsigned();
-            $table->timestamps();
             $table->date('finished_at')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -10,5 +10,6 @@ return [
     'register' => 'registrarse',
     'password.reset' => 'contraseña/recuperar',
     'password.email' => 'contraseña/email',
+    'projects' => 'proyectos',
 
 ];

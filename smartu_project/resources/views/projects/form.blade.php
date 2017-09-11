@@ -17,17 +17,17 @@
                 <div class="panel-heading">{{ $title }}</div>
                 <div class="panel-body">
                 @if($project->exists)
-                    <form class="form-horizontal" action="{{ route('projects.update', ['project' => $project->id]) }}" method="post">
+                    <form class="form-horizontal" action="{{ route('projects.update', ['project' => $project->id]) }}" method="post" enctype="multipart/form-data">
                         {{ method_field('put') }}
                 @else
-                    <form class="form-horizontal" action="{{ route('projects.store') }}" method="post">
+                    <form class="form-horizontal" action="{{ route('projects.store') }}" method="post" enctype="multipart/form-data">
                 @endif
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nombre *</label>
+                            <label for="name" class="col-md-3 control-label">Nombre *</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ $project->name or old('name') }}" required>
 
                                 @if ($errors->has('name'))
@@ -39,10 +39,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="description" class="col-md-4 control-label">Descripción *</label>
+                            <label for="description" class="col-md-3 control-label">Descripción *</label>
 
-                            <div class="col-md-6">
-                                <textarea style="resize:vertical" id="description" rows="5" class="form-control" name="description" required>{{ $project->description or old('description') }}</textarea>
+                            <div class="col-md-7">
+                                <textarea id="description" class="form-control ckeditor" name="description" required>{{ $project->description or old('description') }}</textarea>
 
                                 @if ($errors->has('description'))
                                     <span class="help-block">
@@ -53,9 +53,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                            <label for="url" class="col-md-4 control-label">Sitio web</label>
+                            <label for="url" class="col-md-3 control-label">Sitio web</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input id="url" type="text" class="form-control" name="url" value="{{ $project->url or old('url') }}">
 
                                 @if ($errors->has('url'))
@@ -67,10 +67,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('finished_at') ? ' has-error' : '' }}">
-                            <label for="finished_at" class="col-md-4 control-label">Fecha de finalización</label>
+                            <label for="finished_at" class="col-md-3 control-label">Fecha de finalización</label>
 
-                            <div class="col-md-6">
-                                <input id="finished_at" type="date" class="form-control" name="finished_at" value="{{ old('finished_at') }}">
+                            <div class="col-md-7">
+                                <input id="finished_at" type="date" class="form-control" name="finished_at" value="{{ $project->finished_at or old('finished_at') }}">
 
                                 @if ($errors->has('finished_at'))
                                     <span class="help-block">
@@ -80,8 +80,22 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                            <label for="image" class="col-md-3 control-label">Imagen</label>
+
+                            <div class="col-md-7">
+                                <input id="image" type="file" class="form-control" name="image">
+
+                                @if ($errors->has('image'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('image') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-7 col-md-offset-3">
                                 <button type="submit" class="btn btn-primary">Guardar proyecto</button>
                             </div>
                         </div>

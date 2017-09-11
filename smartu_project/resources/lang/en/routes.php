@@ -10,5 +10,6 @@ return [
     'register' => 'register',
     'password.reset' => 'password/reset',
     'password.email' => 'password/email',
+    'projects' => 'projects',
 
 ];

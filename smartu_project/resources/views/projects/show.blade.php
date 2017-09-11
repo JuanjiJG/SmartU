@@ -11,7 +11,6 @@
                 <small>
                     {{ __('projects.updated') }} {{ $project->updated_at->diffforhumans() }}
                 </small>
-
             </h3>
         </div>
     </div>

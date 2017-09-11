@@ -31,7 +31,7 @@ class ProjectController extends Controller
         $title = 'Proyectos';
         // Avoid the excesive amount of queries when fetching the user data from a project.
         // Using with() when getting the data fixes the performance issue.
-        $projects = Project::with('user')->orderBy('id', 'desc')->paginate(9);
+        $projects = Project::with('user')->orderBy('id', 'desc')->paginate(10);
 
         return view('projects.index')->with(['projects' => $projects, 'title' => $title]);
     }

@@ -2,6 +2,12 @@
 
 return [
 
+    'title' => 'Proyectos',
+    'allprojects' => 'Todos los proyectos',
+    'create' => 'Crear proyecto',
+    'details' => 'Detalles',
+    'no_projects' => 'No hay proyectos disponibles',
+    'create_one' => '¡Crea uno ahora mismo!',
     'updated' => 'Actualizado',
     'by' => 'de',
     'description' => 'Descripción del proyecto',
