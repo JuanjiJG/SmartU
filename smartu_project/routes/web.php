@@ -50,4 +50,7 @@ Route::post('projects/{project}/progress', 'ProgressController@store')->name('pr
 Route::delete('progress/{progress}', 'ProgressController@destroy')->name('progress.destroy');
 
 // Area Controller Routes
-Route::put('project/{project}/areas', 'AreaController@update')->name('areas.update');
+Route::put('projects/{project}/areas', 'AreaController@update')->name('areas.update');
+
+// Like Controller Routes
+Route::get('projects/like/{id}', 'LikeController@likeProject')->name('project.like');

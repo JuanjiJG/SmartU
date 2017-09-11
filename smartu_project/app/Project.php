@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Project extends Model
 {
@@ -12,7 +13,6 @@ class Project extends Model
         'name', 'description', 'url',
     ];
 
-    // Defining relationships for this model
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -30,6 +30,17 @@ class Project extends Model
 
     public function areas()
     {
-        return $this->belongsToMany(Area::Class);
+        return $this->belongsToMany(Area::class);
+    }
+
+    public function likes()
+    {
+        return $this->morphToMany('App\User', 'likeable')->whereDeletedAt(null);
+    }
+
+    public function getIsLikedAttribute()
+    {
+        $like = $this->likes()->whereUserId(Auth::id())->first();
+        return (!is_null($like)) ? true : false;
     }
 }

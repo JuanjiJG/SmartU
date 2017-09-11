@@ -8,10 +8,27 @@
             <h3 class="page-header">
                 {{ $project->name }} <small>{{ __('projects.by') }} <a href="">{{ $project->user->first_name . ' ' . $project->user->last_name }}</a></small>
                 <br>
-                <small>{{ __('projects.updated') }} {{ $project->updated_at->diffforhumans() }}</small>
+                <small>
+                    {{ __('projects.updated') }} {{ $project->updated_at->diffforhumans() }}
+                </small>
+
             </h3>
         </div>
-    </div> {{-- Row --}}
+    </div>
+    <div class="row">
+        {{-- Good Idea Section --}}
+        <div class="col-xs-12 text-right">
+            <ul class="list-inline">
+                <li><a class="btn btn-link btn-sm disabled">{{ __('projects.goodideas', ['count' => count($project->likes)]) }}</a></li>
+                @if ($project->isLiked)
+                    <li><a class="btn btn-danger btn-sm" href="{{ route('project.like', $project->id) }}" role="button">{{ __('projects.notgoodidea') }}</a></li>
+                @else
+                    <li><a class="btn btn-success btn-sm" href="{{ route('project.like', $project->id) }}" role="button"><i class="fa fa-lightbulb-o fa-fw" aria-hidden="true"></i> {{ __('projects.yesgoodidea') }}</a></li>
+                @endif
+
+            </ul>
+        </div>
+    </div>
     <div class="row">
         {{-- Description Panel --}}
         <div class="col-md-8">
@@ -150,7 +167,7 @@
                                   <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0">
                                       <a class="thumbnail"><img src="{{ asset('images/progresses/' . $progress->image) }}"></a>
                                   </div>
-                                  <div class="col-sm-8">
+                                  <div class="col-xs-12 col-sm-8">
                                       <h4>{{ $progress->name }}</h4>
                                       <small>{{ ucfirst($progress->created_at->diffforhumans()) }} - {{ __('projects.published_by') }} <a href="#">{{ $progress->user->first_name . ' ' . $progress->user->last_name }}</a></small>
                                       <p class="lead">{{ $progress->description }}</p>
@@ -248,7 +265,7 @@
                                     <div class="panel-heading">
                                         <b>{{ $comment->user->first_name . ' ' . $comment->user->last_name }}</b> - {{ ucfirst($comment->created_at->diffforhumans()) }}
                                     </div>
-                                    <div class="panel-body text-justify">
+                                    <div class="panel-body text-left">
                                         {{ $comment->content }}
                                     </div>
                                     @if (Auth::check() && (Auth::user()->id == $comment->user->id))
@@ -322,140 +339,3 @@
     </div> {{-- Row --}}
 </div> {{-- Container --}}
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {{-- <div class="row">
-        <div class="col-xs-2">
-            <ul class="list-inline">
-                <li><p><a class="btn btn-default btn-sm" href="{{ route('projects.index') }}"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Volver</a></p></li>
-            </ul>
-        </div>
-        @if (Auth::user())
-            @if($project->user_id == Auth::user()->id)
-            <div class="col-xs-10">
-                <ul class="list-inline text-right">
-                    <li><p><a class="btn btn-warning btn-sm" href="{{ route('projects.edit', ['project' => $project->id]) }}"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Editar</a></p></li>
-                    <li>
-                        <form action="{{ route('projects.destroy', ['project' => $project->id]) }}" method="post">
-                            {{ csrf_field() }}
-                            {{ method_field('delete') }}
-                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash fa-fw" aria-hidden="true"></i> Borrar</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-            @endif
-        @endif
-    </div> --}}
-
-    {{-- <div class="row">
-        <div class="col-sm-2">
-            <ul class="nav nav-pills text-center" role="tablist">
-                <li role="presentation" class="active">
-                    <a href="#info" aria-controls="info" role="tab" data-toggle="pill">Información</a>
-                </li>
-                <li role="presentation">
-                    <a href="#progress" aria-controls="progress" role="tab" data-toggle="pill">Avances</a>
-                </li>
-                <li role="presentation">
-                    <a href="#comments" aria-controls="comments" role="tab" data-toggle="pill">Comentarios</a>
-                </li>
-                <li role="presentation">
-                    <a href="#gallery" aria-controls="gallery" role="tab" data-toggle="pill">Galería</a>
-                </li>
-                <li role="presentation">
-                    <a href="#vacancies" aria-controls="vacancies" role="tab" data-toggle="pill">Vacantes</a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-sm-10">
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade in active" id="info">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    Descripción del proyecto
-                                </div>
-                                <div class="panel-body">
-                                    {{ $project->description }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-3">
-                            <div class="row">
-                                <div class="col sm-6">
-
-                                </div>
-                                <div class="col sm-6">
-
-                                </div>
-                            </div>
-                            <div class="panel panel-info">
-                                <div class="panel-heading">
-                                    Áreas del proyecto
-                                </div>
-                                <div class="panel-body">
-                                    Aquí iran las áreas del proyecto.
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Información
-                                </div>
-                                <div class="panel-body">
-                                    <ul class="list-unstyled">
-                                        <li class="">
-                                            <b>Creado:</b>
-                                            <br>
-                                            {{ date("d-m-Y", strtotime($project->created_at)) }}
-                                        </li>
-                                        <li class="">
-                                            <b>Fecha de finalización:</b>
-                                            <br>
-                                            @if ($project->finished_at)
-                                                {{ date("d-m-Y", strtotime($project->finished_at)) }}
-                                            @else
-                                                No especificada
-                                            @endif
-                                        </li>
-                                        <li class="">
-                                            <b>Última actualización:</b>
-                                            <br>
-                                            {{ date("d-m-Y H:i", strtotime($project->updated_at)) }}
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="progress">
-
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="comments">
-
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="gallery">
-
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="vacancies">
-
-                </div>
-            </div>
-        </div>
-    </div> --}}
