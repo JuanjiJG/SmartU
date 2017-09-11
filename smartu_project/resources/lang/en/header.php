@@ -9,5 +9,6 @@ return [
     'logout' => 'Log out',
     'register' => 'Register',
     'profile' => 'Profile',
+    'areas' => 'Areas',
 
 ];

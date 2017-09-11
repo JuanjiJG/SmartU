@@ -22,6 +22,9 @@
                 <li class="{{ Route::currentRouteNamed('projects.index') ? 'active' : '' }}">
                 <a href="{{ route('projects.index') }}"><i class="fa fa-paperclip fa-fw" aria-hidden="true"></i> {{ __("header.projects") }}</a>
                 </li>
+                <li class="{{ Route::currentRouteNamed('projects.index') ? 'active' : '' }}">
+                <a href="{{ route('projects.index') }}"><i class="fa fa-list fa-fw" aria-hidden="true"></i> {{ __("header.areas") }}</a>
+                </li>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
@@ -46,6 +49,7 @@
                         </ul>
                     </li>
                 @endif
+                <!-- Language Switcher -->
                 <li class="dropdown">
                     <a class="text-uppercase dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         {{ config('app.locale') }} <span class="caret"></span>

@@ -9,5 +9,6 @@ return [
     'logout' => 'Cerrar sesión',
     'register' => 'Registrarse',
     'profile' => 'Perfil',
+    'areas' => 'Áreas',
 
 ];

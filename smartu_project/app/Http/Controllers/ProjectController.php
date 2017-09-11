@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Project;
 use App\Area;
+use Image;
+use Storage;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 
@@ -59,13 +61,25 @@ class ProjectController extends Controller
     {
         $project = new Project;
         $project->fill(
-            $request->only('name', 'description')
+            $request->only('name', 'description', 'url', 'finished_at')
         );
         $project->user_id = $request->user()->id;
+
+        // If the user actually uploaded an image to the form
+        if ($request->hasFile('image')) {
+            // Upload Progress Image to server
+            $image = $request->image;
+            $fileName = 'project_' . $project->id . '_' . time() . '.' . $image->getClientOriginalExtension();
+            $path = public_path('images/projects/' . $fileName);
+
+            // Store the image using Intervention Image
+            Image::make($image)->fit(300, 300)->save($path);
+            $project->image = $fileName;
+        }
+
         $project->save();
 
         session()->flash('message_success', '¡El proyecto se ha creado correctamente!');
-
         return redirect()->route('projects.show', ['project' => $project->id]);
     }
 
@@ -96,7 +110,6 @@ class ProjectController extends Controller
         }
 
         $title = 'Editar proyecto';
-
         return view('projects.form')->with(['project' => $project, 'title' => $title]);
     }
 
@@ -109,12 +122,33 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        $oldFileName = $project->image;
+
         $project->update(
-            $request->only('name', 'description', 'url')
+            $request->only('name', 'description', 'url', 'finished_at')
         );
 
-        session()->flash('message_success', '¡El proyecto se ha editado correctamente!');
+        // If the user actually uploaded an image to the form
+        if ($request->hasFile('image')) {
+            // Upload Progress Image to server
+            $image = $request->image;
+            $fileName = 'project_' . $project->id . '_' . time() . '.' . $image->getClientOriginalExtension();
+            $path = public_path('images/projects/' . $fileName);
 
+            // Store the image using Intervention Image
+            Image::make($image)->fit(300, 300)->save($path);
+
+            // Delete old photo if it's not the default one
+            if ($project->image != 'default.jpg') {
+                Storage::delete('images/projects/' . $oldFileName);
+            }
+
+            // Update project information
+            $project->image = $fileName;
+            $project->save();
+        }
+
+        session()->flash('message_success', '¡El proyecto se ha editado correctamente!');
         return redirect()->route('projects.show', ['project' => $project->id]);
     }
 
@@ -133,7 +167,6 @@ class ProjectController extends Controller
         $project->delete();
 
         session()->flash('message_warning', '¡El proyecto se ha eliminado correctamente!');
-
         return redirect()->route('projects.index');
     }
 }

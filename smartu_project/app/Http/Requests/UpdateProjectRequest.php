@@ -11,8 +11,8 @@ class UpdateProjectRequest extends CreateProjectRequest
      *
      * @return bool
      */
-     public function authorize()
-     {
-         return $this->user()->id == $this->project->user_id;
-     }
+    public function authorize()
+    {
+        return $this->user()->id == $this->project->user_id;
+    }
 }

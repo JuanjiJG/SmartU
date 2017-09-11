@@ -42,9 +42,9 @@
                             {{-- Project Title --}}
                             <a href="{{ route('projects.show', ['id' => $project->id]) }}"><h4>{{ $project->name }}</h4></a>
                             {{-- Project Author --}}
-                            <small>{{ __('dashboard.by') }} <a href="#">{{ $project->user->first_name . ' ' . $project->user->last_name }}</a></small>
+                            <strong>{{ __('dashboard.by') }} <a href="#">{{ $project->user->first_name . ' ' . $project->user->last_name }}</a></strong>
                             {{-- Project Description --}}
-                            <p class="lead">{!! str_limit($project->description, 100) !!}</p>
+                            {!! str_limit($project->description, 100) !!}
                             {{-- Project Info and Good Ideas Count --}}
                             <ul class="list-inline">
                               <li><a href="{{ route('projects.show', ['id' => $project->id]) }}" class="btn btn-info" role="button"><i class="fa fa-info fa-fw" aria-hidden="true"></i> {{ __('projects.details') }}</a></li>

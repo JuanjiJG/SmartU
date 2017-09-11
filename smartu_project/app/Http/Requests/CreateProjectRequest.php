@@ -26,7 +26,9 @@ class CreateProjectRequest extends FormRequest
         return [
             'name' => 'required|string|max:191',
             'description' => 'required|string',
-            'url' => 'nullable|url',
+            'url' => 'url|nullable',
+            'finished_at' => 'date|nullable',
+            'image' => 'image|mimes:jpeg,png,jpg|max:1999|nullable',
         ];
     }
 }

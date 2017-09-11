@@ -76,31 +76,40 @@
                         @if (Auth::check() && (Auth::user()->id == $project->user_id))
                             <div class="panel-footer">
                                 {{-- Button Trigger Modal --}}
-                                <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#add-area-modal">
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#add-area-modal">
                                     <i class="fa fa-plus fa-fw" aria-hidden="true"></i> {{ __('projects.add_area') }}
                                 </button>
+                                <a class="btn btn-warning btn-sm" href="{{ route('projects.edit', ['project' => $project->id]) }}"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> {{ __('projects.edit') }}</a>
                             </div>
                         @endif
                     </div>
                 </div>
-                {{-- Project Members Panel --}}
                 <div class="col-sm-6 col-md-12">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">{{ __('projects.image') }}</div>
+                        <div class="panel-body">
+                            <a class="thumbnail"><img src="{{ asset('images/projects/' . $project->image) }}"></a>
+                        </div>
+                    </div>
+                </div>
+                {{-- Project Members Panel --}}
+                {{-- <div class="col-sm-6 col-md-12">
                     <div class="panel panel-warning">
                         <div class="panel-heading">{{ __('projects.members') }}</div>
                         <div class="panel-body">
                             Aquí aparecerán los integrantes del proyecto.
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 {{-- Project Available Vacancies Panel --}}
-                <div class="col-sm-6 col-md-12">
+                {{-- <div class="col-sm-6 col-md-12">
                     <div class="panel panel-warning">
                         <div class="panel-heading">{{ __('projects.vacancies') }}</div>
                         <div class="panel-body">
                             Aquí aparecerán las vacantes disponibles del proyecto.
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         @if (Auth::check() && (Auth::user()->id == $project->user_id))
