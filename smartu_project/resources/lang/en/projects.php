@@ -3,6 +3,7 @@
 return [
 
     'title' => 'Projects',
+    'titlearea' => 'Projects by Area',
     'allprojects' => 'All projects',
     'create' => 'Create project',
     'details' => 'Details',

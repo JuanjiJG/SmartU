@@ -7,7 +7,7 @@ use Auth;
 
 class Project extends Model
 {
-    protected $with = ['comments', 'areas'];
+    protected $with = ['user', 'comments', 'areas'];
 
     protected $fillable = [
         'name', 'description', 'url', 'finished_at', 'image',

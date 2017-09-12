@@ -15,7 +15,22 @@ class AreaController extends Controller
     */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['index']]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index($id = 1)
+    {
+        $title = 'Proyectos';
+        $all_areas = Area::all();
+        $main_area = Area::find($id);
+        $projects = $main_area->projects()->orderBy('id', 'desc')->paginate(10);
+
+        return view('projects.indexareas')->with(['main_area' => $main_area, 'projects' => $projects, 'title' => $title, 'all_areas' => $all_areas]);
     }
 
     /**

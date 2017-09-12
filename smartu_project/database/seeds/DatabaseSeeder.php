@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         // Manually insert the default areas for projects
         DB::table('areas')->insert([
             'name' => 'Informática',
-            'description' => 'Proyectos para los amantes de la programación',
+            'description' => 'Proyectos para los amantes de la programación.',
         ]);
         DB::table('areas')->insert([
             'name' => 'Diseño gráfico',

@@ -22,8 +22,8 @@
                 <li class="{{ Route::currentRouteNamed('projects.index') ? 'active' : '' }}">
                 <a href="{{ route('projects.index') }}"><i class="fa fa-paperclip fa-fw" aria-hidden="true"></i> {{ __("header.projects") }}</a>
                 </li>
-                <li class="{{ Route::currentRouteNamed('projects.index') ? 'active' : '' }}">
-                <a href="{{ route('projects.index') }}"><i class="fa fa-list fa-fw" aria-hidden="true"></i> {{ __("header.areas") }}</a>
+                <li class="{{ Route::currentRouteNamed('areas.index') ? 'active' : '' }}">
+                <a href="{{ route('areas.index') }}"><i class="fa fa-list fa-fw" aria-hidden="true"></i> {{ __("header.areas") }}</a>
                 </li>
             </ul>
             <!-- Right Side Of Navbar -->

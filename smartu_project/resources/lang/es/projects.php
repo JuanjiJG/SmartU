@@ -3,6 +3,7 @@
 return [
 
     'title' => 'Proyectos',
+    'titlearea' => 'Proyectos por área',
     'allprojects' => 'Todos los proyectos',
     'create' => 'Crear proyecto',
     'details' => 'Detalles',

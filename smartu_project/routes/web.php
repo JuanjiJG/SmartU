@@ -51,6 +51,7 @@ Route::delete('progress/{progress}', 'ProgressController@destroy')->name('progre
 
 // Area Controller Routes
 Route::put('projects/{project}/areas', 'AreaController@update')->name('areas.update');
+Route::get('areas/{area?}', 'AreaController@index')->name('areas.index');
 
 // Like Controller Routes
 Route::get('projects/like/{id}', 'LikeController@likeProject')->name('project.like');
