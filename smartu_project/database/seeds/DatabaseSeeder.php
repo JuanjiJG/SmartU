@@ -13,28 +13,22 @@ class DatabaseSeeder extends Seeder
     {
         // Manually insert the default areas for projects
         DB::table('areas')->insert([
-            'name' => 'Informática',
-            'description' => 'Proyectos para los amantes de la programación.',
+            'name' => 'areas.computer_science',
         ]);
         DB::table('areas')->insert([
-            'name' => 'Diseño gráfico',
-            'description' => '¿Fan del diseño y de la creatividad? Ésta es tu área.',
+            'name' => 'areas.graphic_design',
         ]);
         DB::table('areas')->insert([
-            'name' => 'Arquitectura',
-            'description' => 'Aquí se encuentran los proyectos que transforman las ciudades.',
+            'name' => 'areas.architecture',
         ]);
         DB::table('areas')->insert([
-            'name' => 'Comunicaciones',
-            'description' => 'Si lo tuyo es la información y comunicar, has venido al área adecuada.',
+            'name' => 'areas.communications',
         ]);
         DB::table('areas')->insert([
-            'name' => 'Audiovisuales',
-            'description' => 'Para los que disfrutan creando contenido multimedia.',
+            'name' => 'areas.audiovisuals',
         ]);
         DB::table('areas')->insert([
-            'name' => 'Empresariales',
-            'description' => '¿Buscas proyectos de ámbito empresarial? No busques más, están aquí.',
+            'name' => 'areas.business',
         ]);
 
         factory(App\Project::class, 10)->create()->each(

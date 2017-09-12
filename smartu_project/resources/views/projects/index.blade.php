@@ -34,7 +34,7 @@
                         <div class="col-sm-8">
                             @if (count($project->areas) > 0)
                                 @foreach ($project->areas as $area)
-                                    <a href="#"><span class="label label-primary">{{ $area->name}}</span></a>
+                                    <a href="{{ route('areas.index', ['area' => $area->id]) }}"><span class="label label-primary">{{ __($area->name) }}</span></a>
                                 @endforeach
                             @else
                                 <a><span class="label label-danger">{{ __('projects.no_areas') }}</span></a>

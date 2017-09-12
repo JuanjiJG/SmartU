@@ -9,7 +9,7 @@
                 {{ __('projects.titlearea') }}
                 <br>
                 <small>
-                    {{ $main_area->name }}
+                    {{ __($main_area->name) }}
                 </small>
             </h3>
         </div>
@@ -24,9 +24,9 @@
                 <ul class="list-inline">
                     @foreach ($all_areas as $area)
                         @if ($area->id != $main_area->id)
-                            <li><p><a class="btn btn-primary btn-sm" href="{{ route('areas.index', ['area' => $area->id]) }}">{{ $area->name }}</a></p></li>
+                            <li><p><a class="btn btn-primary btn-sm" href="{{ route('areas.index', ['area' => $area->id]) }}">{{ __($area->name) }}</a></p></li>
                         @else
-                            <li><p><a class="btn btn-primary btn-sm disabled" href="{{ route('areas.index', ['area' => $area->id]) }}">{{ $area->name }}</a></p></li>
+                            <li><p><a class="btn btn-primary btn-sm disabled" href="{{ route('areas.index', ['area' => $area->id]) }}">{{ __($area->name) }}</a></p></li>
                         @endif
                     @endforeach
                 </ul>
@@ -43,7 +43,7 @@
                         <div class="col-sm-8">
                             @if (count($project->areas) > 0)
                                 @foreach ($project->areas as $area)
-                                    <a href="#"><span class="label label-primary">{{ $area->name}}</span></a>
+                                    <a href="{{ route('areas.index', ['area' => $area->id]) }}"><span class="label label-primary">{{ __($area->name) }}</span></a>
                                 @endforeach
                             @else
                                 <a><span class="label label-danger">{{ __('projects.no_areas') }}</span></a>
