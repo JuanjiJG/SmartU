@@ -49,7 +49,7 @@
         @endforeach
     </div>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <h3 class="page-header">{{ __('dashboard.recent') }}</h3>
             <div class="row">
                 @foreach ($recent_projects as $recent_project)
@@ -73,14 +73,14 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <h3 class="page-header">{{ __('dashboard.search') }}</h3>
             <div class="row display-flex">
                 @foreach ($areas as $area)
-                    <div class="col-xs-6 col-sm-3 col-md-6">
+                    <div class="col-xs-6 col-sm-4 col-md-6">
                         <div class="well well-sm text-center">
-                            <a href="#"><h5>{{ __($area->name) }}</h5></a>
-                            <small>1 {{ trans_choice('dashboard.projects', 1) }}</small>
+                            <a href="{{ route('areas.index', ['area' => $area->id]) }}"><h5>{{ __($area->name) }}</h5></a>
+                            <small>{{ count($area->projects) }} {{ trans_choice('dashboard.projects', count($area->projects)) }}</small>
                         </div>
                     </div>
                 @endforeach

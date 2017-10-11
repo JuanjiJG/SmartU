@@ -23,11 +23,7 @@
                 </ul>
                 <ul class="list-inline">
                     @foreach ($all_areas as $area)
-                        @if ($area->id != $main_area->id)
-                            <li><p><a class="btn btn-primary btn-sm" href="{{ route('areas.index', ['area' => $area->id]) }}">{{ __($area->name) }}</a></p></li>
-                        @else
-                            <li><p><a class="btn btn-primary btn-sm disabled" href="{{ route('areas.index', ['area' => $area->id]) }}">{{ __($area->name) }}</a></p></li>
-                        @endif
+                        <li><p><a class="btn btn-primary btn-sm @if ($area->id == $main_area->id) disabled @endif" href="{{ route('areas.index', ['area' => $area->id]) }}">{{ __($area->name) }}</a></p></li>
                     @endforeach
                 </ul>
             </div>
@@ -53,7 +49,8 @@
                             {{-- Project Author --}}
                             <strong>{{ __('dashboard.by') }} <a href="#">{{ $project->user->first_name . ' ' . $project->user->last_name }}</a></strong>
                             {{-- Project Description --}}
-                            {!! str_limit($project->description, 100) !!}
+                            <br>
+                            {!! str_limit($project->description, 80) !!}
                             {{-- Project Info and Good Ideas Count --}}
                             <ul class="list-inline">
                               <li><a href="{{ route('projects.show', ['id' => $project->id]) }}" class="btn btn-info" role="button"><i class="fa fa-info fa-fw" aria-hidden="true"></i> {{ __('projects.details') }}</a></li>
