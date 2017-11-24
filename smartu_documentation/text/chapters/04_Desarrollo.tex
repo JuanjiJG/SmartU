@@ -1,16 +1,13 @@
 \chapter{Proceso de desarrollo}
 \label{ch:desarrollo}
-
-En este tercer capítulo comenzaremos por una introducción para explicar la forma de trabajo que se ha seguido, seguido del apartado de análisis, en el que definimos qué es lo queremos que sea exactamente SmartU, pasando por el diseño de la aplicación web habiendo conocido ya los actores del sistema y sus requisitos.\\
-
-A continuación pasamos al apartado de implementación, donde se detalla de forma más técnica cómo se ha creado este sistema de información web, y terminamos hablando de la fase de pruebas. El capítulo incluye un apartado de herramientas que han sido utilizadas para el desarrollo.
+Este capítulo abarca mi parte de desarrollo de software de la aplicación web de SmartU. Se describe el análisis y los requisitos que hemos obtenido para este sistema, pasando por el diseño e implementación del mismo. Al final del capítulo se incluye un apartado de herramientas que han sido utilizadas para el desarrollo de este software.
 
 \section{Introducción}
-Al comenzar el desarrollo del proyecto, se pudo apreciar que había una alta posibilidad de sufrir cambios a lo largo del proceso debido a que el alcance del mismo no estaba muy delimitado. Es por ello que se optó por seguir una metodología principalmente ágil, la cual permitía mayor flexibilidad y facilidad para adaptar posibles cambios.\\
+Al comenzar el desarrollo, se pudo apreciar que había una alta posibilidad de sufrir cambios a lo largo del proceso debido a que el alcance del mismo no estaba muy delimitado. Es por ello que se optó por seguir una metodología principalmente ágil, la cual permitía mayor flexibilidad y facilidad para adaptar posibles cambios.\\
 
 En el desarrollo ágil es importante la comunicación entre todos los miembros del equipo y que éstos, de alguna forma, participen activamente durante el desarrollo. No todos los miembros de este equipo multidisciplinar trabajan en el ámbito de la Ingeniería Informática, pero sabíamos que podían colaborar en las primeras fases aportando ideas y posibles requisitos. Sin embargo, sí que era importante que hubiera comunicación y consenso entre los miembros del área de Informática. Con mi compañero Emilio se realizó una puesta en común para intentar unificar las plataformas que cada uno teníamos que desarrollar.\\
 
-Siguiendo algunos de los principios del desarrollo ágil, se ha evitado realizar documentación innecesaria, y se ha optado por ir a lo primordial y esencial, sin que ello repercuta en la calidad del software. Hay que tener en cuenta que este desarrollo pretende ser continuado y mejorado en el tiempo, por lo que una documentación base correcta es más importante que rellenar páginas y páginas innecesarias.\\
+Siguiendo algunos de los principios del desarrollo ágil, se ha evitado realizar documentación innecesaria, y se ha optado por ir a lo primordial y esencial, sin que ello repercuta en la calidad del software. Hay que tener en cuenta que este desarrollo pretende ser continuado y mejorado en el tiempo, por lo que una documentación base correcta es importante.\\
 
 Por último, añadiremos que se ha preferido optar por establecer una lista de requisitos del sistema en lugar de emplear la técnica de las \textbf{historias de usuario}, ya que no son de obligado cumplimiento el desarrollarlas, y se ha de tener en cuenta el hecho de que el desarrollo será continuado por otras personas en el futuro.
 
@@ -23,7 +20,7 @@ La fase de análisis se distribuye en \textbf{dos grandes bloques}:
 \end{itemize}
 
 \subsection{Generación de ideas y extracción de requisitos}
-El equipo de trabajo multidisciplinar se reunió varias veces para realizar sesiones de generación de ideas, tales como el \textit{Brainstorming}, que llevó a cabo mi compañero Emilio, o el proceso creativo de \textit{Design Thinking} llevado a cabo por mi compañero Juan y por mí.\\
+Tal y como se describió en el capítulo \ref{ch:metodologia}, es importante realizar sesiones de generación de ideas para empezar a recopilar ideas para el desarrollo. Se realizó un seminario sobre tecnologías emergentes, y otro sobre \textit{Design Thinking/Brainstorming}. Esto se describe con más detalle en el capítulo \ref{ch:conclusiones}.\\
 
 Más adelante se obtuvo más información gracias a la presentación del proyecto multidisciplinar que se hizo en la Facultad de Ciencias de la Actividad Física y del Deporte, realizada por los compañeros Javier y Juan. Allí se pudo enseñar el proyecto a potenciales usuarios (\textit{stakeholders}) y recibimos opiniones muy interesantes de posibles características que les gustaría ver para que fuese una aplicación web más completa y funcional.
 
@@ -44,21 +41,21 @@ Como podemos ver, el conjunto de potenciales usuarios intenta abarcar a todo el 
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{usuario_estudiante}
+    \includegraphics[scale=0.275]{usuario_estudiante}
     \caption{\textit{User Persona} de un estudiante}
     \label{usuario_estudiante}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{usuario_ciudadano}
+    \includegraphics[scale=0.275]{usuario_ciudadano}
     \caption{\textit{User Persona} de un ciudadano}
     \label{usuario_ciudadano}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{usuario_empresario}
+    \includegraphics[scale=0.275]{usuario_empresario}
     \caption{\textit{User Persona} de un empresario}
     \label{usuario_empresario}
 \end{figure}
@@ -239,30 +236,34 @@ Se quiere implementar un sistema de información basado en web que sea capaz de 
     \item[RNF4.] El código de la aplicación debe estar correctamente comentado para facilitar la tarea de mejorarlo a los futuros desarrolladores que continúen el proyecto.
 \end{description}
 
-\section{Diseño}
-
-
-\section{Implementación}
-Tras el proceso de análisis de nuestro sistema y extracción de los requisitos que necesitaría nuestra aplicación web (\textit{expuestos en anteriores apartados de este capítulo}), en este voy a detallar los principales aspectos de la implementación de la misma, incidiendo en aspectos importantes e inherentes al proceso de desarrollo de un sistema de información web.\\
+\section{Diseño e Implementación}
+Tras el proceso de análisis de nuestro sistema y extracción de los requisitos que necesitaría nuestra aplicación web, procedemos a describir los principales aspectos de diseño e implementación de la misma, incidiendo en aspectos importantes e inherentes al proceso de desarrollo de un sistema de información web.\\
 
 La codificación de la aplicación web de SmartU venía condicionada por la necesidad de un desarrollo que fuese agilizado e iterativo, intentando completar funcionalidades específicas en cada \textit{``paso''} que se diese a lo largo de este proceso. Esto me llevó a tomar una serie de decisiones respecto al lenguage de programación que utilizaría, así como el conjunto de herramientas que me ayudarían con esta tarea, pero siempre teniendo como máxima un desarrollo correcto y bien realizado.
 
 \subsection{Laravel}
-¿Por qué utilizar un \textit{``framework''} de desarrollo web como Laravel? La elección del mismo no fue fácil, y llevó algo de tiempo debido al análisis de pros y contras que podría encontrarme a lo largo del proceso de desarrollo. Existen numerosos lenguages de programación como Python, JavaScript, Java, etc, todos con diferentes soluciones de desarrollo web. En el caso de Laravel, se basa en el lenguage PHP, que es ya bien conocido en el mundo de la programación web, y a lo largo de los años ha ido mejorando su potencial con nuevas versiones que incorporaban características que si estaban presentes en otros lenguages.\\
+Para este proyecto, opté por el framework \textbf{Laravel} \cite{laravel}. La elección del mismo no fue fácil, y llevó algo de tiempo debido al análisis de pros y contras que podría encontrarme a lo largo del proceso de desarrollo. Existen numerosos lenguages de programación como Python, JavaScript, Java, etc, todos con diferentes soluciones de desarrollo web. En el caso de Laravel, se basa en el lenguage PHP, que es ya bien conocido en el mundo de la programación web, y a lo largo de los años ha ido mejorando su potencial con nuevas versiones que incorporaban características que si estaban presentes en otros lenguages.\\
 
 Laravel es un framework de desarrollo web basado en PHP creado por Taylor Otwell en el año 2011. Fue creado con el intento de proporcionar una alternativa más avanzada a \textbf{CodeIgniter}. En muchos lugares de Internet, Laravel es conocido por darle un muy necesitado lavado de cara a PHP, y hacerlo de nuevo más atractivo a la vista de los desarrolladores.\\
 
 Laravel agiliza los procesos en casi todos los apartados existentes del desarrollo de una aplicación web. Proporciona un conjunto de herramientas para gestionar la autenticación de usuarios, bases de datos rutas, entre otros elementos que a continuación se detallan:
 
 \begin{itemize}
-    \item Está basado en el conocido patrón de diseño MVC \textbf{(Modelo-Vista-Controlador)}, lo cual permite separar la lógica de nuestra aplicación de la interfaz de usuario, usando como intermediario un controlador que mueva los datos entre modelos y vistas.
+    \item Está basado en el conocido patrón de diseño MVC \textbf{(Modelo-Vista-Controlador)}, lo cual permite separar la lógica de nuestra aplicación de la interfaz de usuario, usando como intermediario un controlador que mueva los datos entre modelos y vistas. Con esta idea en mente es fácil obtener un diagrama de clases general del sistema, como el que podemos ver en la imagen \ref{diagramaclases}.
     \item Cuenta con soporte para \textbf{Composer}, lo cual nos permite gestionar de forma sencilla las dependencias de nuestro proyecto, por ejemplo para realizar el despliegue.
     \item Al estar basado en PHP, contamos con el extenso conjunto de funciones que ya nos proporciona el lenguage. Para los programadores actuales de PHP, empezar a usar Laravel \textbf{no supone un mayor esfuerzo}, ya que usa todos los elementos y sintaxis del mismo.
     \item Cuenta con un motor de plantillas, \textbf{Blade}, que permite construir la interfaz web de forma dinámica, recibiendo datos como parámetros y utilizarlos para mostrar la información al usuario.
     \item Laravel dispone de una \textbf{extensa comunidad} de desarrolladores que proporcionan consejos y soluciones a los diversos problemas que puedan surgir a la hora de desarrollar con este framework. En este sentido es fácil encontrar la respuesta a cualquier duda, lo cual hace que el aprendizaje sea mucho más sencillo.
 \end{itemize}
 
-La razón por la que elegí este framework era por la sencillez con la que resolvía muchos de los aspectos técnicos que esta aplicación web necesita, además de que se basa en un lenguage de programación que conozco. Siempre es importante estar al tanto de las novedades en los lenguages de programación, pero cuando el tiempo es una restricción muy importante, se hace necesario usar soluciones basadas en algo que ya se conoce.
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.6]{diagramaclases}
+    \caption{Diagrama de clases general del sistema}
+    \label{diagramaclases}
+\end{figure}
+
+La razón por la que elegí este framework era por la sencillez con la que resolvía muchos de los aspectos técnicos que esta aplicación web necesita, además de que se basa en un lenguage de programación que conozco. Siempre es importante estar al tanto de las novedades en los lenguages de programación, pero cuando el tiempo es una restricción muy importante, se hace necesario usar soluciones basadas en algo que ya se conoce. Además, la documentación de este framework es bastante extensa, y cuenta con diversas guías y tutoriales, lo que agillizó bastante su manejo y aprendizaje \cite{laraveldocs}.
 
 \subsection{Estructura del proyecto}
 El proyecto se divide en una serie de carpetas generadas automáticamente al crear un nuevo proyecto de Laravel. El código logra una mayor legibilidad y mantenibilidad al separar en diferentes directorios la arquitectura de nuestra aplicación web. En la figura \ref{directorios} podemos ver la estructura completa de ficheros y carpetas, destacando las siguientes:
@@ -308,10 +309,9 @@ Para realizar la fase de pruebas de este proyecto, se ha seguido el proceso habi
     \item El desarrollo se ha realizado implementando en primer lugar las \textbf{funcionalidades \textit{core}} o ensenciales de la aplicación, es decir, la gestión de los usuarios y los proyectos, así como la gestión de los diferentes idiomas que pueda haber disponibles.\\
     Se ha garantizado mediante pruebas que en este punto es posible crear usuarios y proyectos, y los usuarios invitados (no registrados) sólo pueden hacer operaciones de consulta.\\
     También se ha garantizado que el cambio de idioma de la aplicación se hace correctamente.
-    \item Tras la funcionalidad esencial, se han implementado las \textbf{pequeñas funcionalidades} que no presentan un fuerte acoplamiento con otras y que, por ende, no dependen del funcionamiento de éstas, de modo que se puede garantizar más rápidamente su correcto funcionamiento.\\
+    \item Tras la funcionalidad esencial, se han implementado las \textbf{pequeñas funcionalidades} que no presentan un fuerte acoplamiento con otras y que no dependen del funcionamiento de éstas, de modo que se puede garantizar más rápidamente su correcto funcionamiento.\\
     Entre las funcionalidades que se consideran ``auto-contenidas'' encontramos los comentarios de un proyecto, los avances, los ``Buena Idea'', las áreas y las especialidades.
-    \item Por último, una vez que se ha realizado todo lo necesario para probar la funcionalidad esencial y las pequeñas funcionalidades auto-contenidas, se procedió a la implementación de las \textbf{funcionalidades más complejas} que requerían de la interacción entre otros componentes de la aplicación. Cada funcionalidad se iba probando en todos los posibles casos de uso.\\
-    Aquí se incluye toda la funcionalidad relativa a las vacantes y las solicitudes para incorporarse como integrantes de un proyecto, y las notificaciones.
+    \item Por último, una vez que se ha realizado todo lo necesario para probar la funcionalidad esencial y las pequeñas funcionalidades auto-contenidas, se procedió a la implementación de las \textbf{funcionalidades más complejas} que requerían de la interacción entre otros componentes de la aplicación. Cada funcionalidad se iba probando en todos los posibles casos de uso. Aquí se incluye toda la funcionalidad relativa a las vacantes y las solicitudes para incorporarse como integrantes de un proyecto, y las notificaciones.
 \end{itemize}
 
 Debido a los problemas de tiempo que he tenido para realizar este proyecto, no he podido realizar pruebas más exahustivas de la implementación, o incluso pruebas unitarias. Para futuras ampliaciones de este proyecto (ya que se espera una continuación del mismo), sería apropiado realizar una colección de pruebas que se pudieran ejecutar de forma automatizada antes de proceder a incrementar el conjunto de funcionalidades de la aplicación web.
@@ -327,4 +327,62 @@ Para el desarrollo de este proyecto he utilizado el siguiente conjunto de herram
     \item Windows 10 Pro Versión 1703.
 \end{itemize}
 
-El proyecto es fácilmente portable a otros entornos de desarrollo siguiendo las instrucciones del anexo de intalación incluido en esta documentación.
+\subsection{Capturas de pantalla de la aplicación}
+En esta sección se muestran una serie de capturas de pantalla de la aplicación que muestran lo que se ha implementado hasta ahora. Como se ha mencionado anteriormente, y se remarca en el capítulo \ref{ch:conclusiones}, aun quedan funcionalidades por implementar, que en sucesivas iteraciones del proyecto deberán ser terminadas.\\
+
+Para poder ilustrar la aplicación y ver cómo quedan algunas de sus secciones, se ha rellenado con datos de ejemplo y el uso del \textit{Lorem Ipsum} como relleno para los cuadros de texto.\\
+
+En las imágenes \ref{welcome} y \ref{dashboard} podemos ver la pantalla de bienvenida de SmartU y la página principal de proyectos/comentarios destacados, así como los últimos proyectos publicados y una zona para buscar por diferentes áreas.\\
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.16]{welcome}
+    \caption{Página de bienvenida de SmartU}
+    \label{welcome}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.16]{dashboard}
+    \caption{Página inicial de SmartU (Destacados)}
+    \label{dashboard}
+\end{figure}
+
+En la figura \ref{dashboardenglish} se puede apreciar la característica de multilenguaje de la aplicación en la misma página de destacados. Cualquier usuario puede entrar y ver los proyectos, pero para poder interactuar más en SmartU, como por ejemplo dejar un comentario, o publicar un proyecto, nuevo, primero hay que registrarse, tal y como se ve en la imagen \ref{register}.\\
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.16]{dashboardenglish}
+    \caption{Página inicial de SmartU con el idioma en inglés}
+    \label{dashboardenglish}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.16]{register}
+    \caption{Página de registro de un nuevo usuario}
+    \label{register}
+\end{figure}
+
+En las imágenes \ref{projects}, \ref{project} y \ref{progress} se ve las secciones de \textit{Todos los proyectos}, \textit{Detalle de un proyecto} y la sección de avances (hitos, progresos que se hacen en el proyecto), así como los comentarios que otros usuarios han dejado en el proyecto.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.16]{projects}
+    \caption{Listado de todos los proyectos}
+    \label{projects}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.16]{project}
+    \caption{Vista de detalles de un proyecto}
+    \label{project}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.16]{progress}
+    \caption{Vista de avances y comentarios de un proyecto}
+    \label{progress}
+\end{figure}
